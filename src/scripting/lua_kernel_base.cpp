@@ -99,7 +99,7 @@ static int impl_version_get(lua_State* L)
 		int n = lua_tointeger(L, 2) - 1;
 		auto& components = vers.components();
 		if(n >= 0 && size_t(n) < components.size()) {
-			lua_pushinteger(L, vers.components()[n - 1]);
+			lua_pushinteger(L, vers.components()[n]);
 		} else {
 			lua_pushnil(L);
 		}
@@ -152,7 +152,7 @@ static int intf_make_version(lua_State* L)
 	}
 	// If it's a string, parse it; otherwise build from components
 	// The components method only supports canonical versions
-	if(lua_isstring(L, 1)) {
+	if(lua_type(L, 1) == LUA_TSTRING) {
 		new(L) version_info(lua_check<std::string>(L, 1));
 	} else {
 		int major = luaL_checkinteger(L, 1), minor = luaL_optinteger(L, 2, 0), rev = luaL_optinteger(L, 3, 0);
@@ -432,6 +432,31 @@ static int intf_deprecated_message(lua_State* L) {
 }
 
 /**
+ * Converts a Lua array to a named tuple.
+ * Arg 1: A Lua array
+ * Arg 2: An array of strings
+ * Ret: A copy of arg 1 that's now a named tuple with the names in arg 2.
+ * The copy will only include the array portion of the input array.
+ * Any non-integer keys or non-consecutive keys will be gone.
+ * Note: This exists so that wml.tag can use it but is not really intended as a public API.
+ */
+static int intf_named_tuple(lua_State* L)
+{
+	if(!lua_istable(L, 1)) {
+		return luaW_type_error(L, 1, lua_typename(L, LUA_TTABLE));
+	}
+	auto names = lua_check<std::vector<std::string>>(L, 2);
+	lua_len(L, 1);
+	int len = luaL_checkinteger(L, -1);
+	luaW_push_namedtuple(L, names);
+	for(int i = 1; i <= std::max<int>(len, names.size()); i++) {
+		lua_geti(L, 1, i);
+		lua_seti(L, -2, i);
+	}
+	return 1;
+}
+
+/**
 * Returns the time stamp, exactly as [set_variable] time=stamp does.
 * - Ret 1: integer
 */
@@ -537,6 +562,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "compile_formula",          &lua_formula_bridge::intf_compile_formula},
 		{ "eval_formula",             &lua_formula_bridge::intf_eval_formula},
 		{ "name_generator",           &intf_name_generator           },
+		{ "named_tuple",              &intf_named_tuple              },
 		{ "log",                      &intf_log                      },
 		{ "ms_since_init",            &intf_ms_since_init           },
 		{ "get_language",             &intf_get_language             },
@@ -954,7 +980,7 @@ int lua_kernel_base::impl_game_config_get(lua_State* L)
 	return_int_attrib("recall_cost", game_config::recall_cost);
 	return_int_attrib("kill_experience", game_config::kill_experience);
 	return_int_attrib("combat_experience", game_config::combat_experience);
-	return_string_attrib_deprecated("version", "wesnoth.game_config", INDEFINITE, "1.17", "Use version.current() instead", game_config::wesnoth_version.str());
+	return_string_attrib_deprecated("version", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.current_version() instead", game_config::wesnoth_version.str());
 	return_bool_attrib("debug", game_config::debug);
 	return_bool_attrib("debug_lua", game_config::debug_lua);
 	return_bool_attrib("strict_lua", game_config::strict_lua);

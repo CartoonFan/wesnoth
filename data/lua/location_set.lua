@@ -203,11 +203,19 @@ end
 function methods:of_pairs(t)
 	local values = self.values
 
+	local function has_key(v, k)
+		if type(v) == 'userdata' then
+			return v[k] ~= nil
+		elseif type(v) == 'table' then
+			return rawget(v, k) ~= nil
+		end
+	end
+
 	for i,v in ipairs(t) do
 		local value_table = {}
 		local x_index
 		local y_index
-		if v.x and v.y then
+		if has_key(v, 'x') and has_key(v, 'y') then
 			x_index = "x"
 			y_index = "y"
 		else
@@ -261,12 +269,24 @@ function methods:to_stable_pairs()
 	return res
 end
 
-function methods:to_wml_var(name)
+function methods:to_wml_var(name, mode)
+	mode = mode or "always_clear"
+	local is_explicit_index = name[-1] == "]"
 	local i = 0
-	wml.variables[name] = nil
+	if is_explicit_index then
+		-- explicit indexes behave always like "replace"
+	elseif mode == "append" then
+		i = wml.variables[name .. ".length"]
+	elseif mode ~= "replace" then
+		wml.variables[name] = nil
+	end
 	self:stable_iter(function(x, y, v)
-		if type(v) == 'table' then
+		if wml.valid(v) then
 			wml.variables[string.format("%s[%d]", name, i)] = v
+		elseif wml.valid{value = v} then
+			wml.variables[string.format("%s[%d]", name, i)] = {value = v}
+		elseif type(v) ~= 'boolean' then
+			warning('Location set value could not be converted to a WML variable:', v)
 		end
 		wml.variables[string.format("%s[%d].x", name, i)] = x
 		wml.variables[string.format("%s[%d].y", name, i)] = y
@@ -299,6 +319,10 @@ end
 
 function location_set.create()
 	return setmetatable({ values = {} }, locset_meta)
+end
+
+function location_set.of_raw(data)
+	return setmetatable({ values = data }, locset_meta)
 end
 
 function location_set.of_pairs(t)

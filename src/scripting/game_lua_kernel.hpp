@@ -85,9 +85,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_match_unit(lua_State *L);
 	int intf_get_recall_units(lua_State *L);
 	int intf_get_variable(lua_State *L);
-	int intf_get_side_variable(lua_State *L);
 	int intf_set_variable(lua_State *L);
-	int intf_set_side_variable(lua_State *L);
 	int intf_highlight_hex(lua_State *L);
 	int intf_is_enemy(lua_State *L);
 	int intf_unit_ability(lua_State *L);
@@ -101,7 +99,6 @@ class game_lua_kernel : public lua_kernel_base
 	void luaW_push_schedule(lua_State* L, int area_index);
 	int intf_get_village_owner(lua_State *L);
 	int intf_set_village_owner(lua_State *L);
-	int intf_get_map_size(lua_State *L);
 	int intf_get_mouseover_tile(lua_State *L);
 	int intf_get_selected_tile(lua_State *L);
 	int impl_game_config_get(lua_State *L) override;
@@ -118,7 +115,6 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_find_vision_range(lua_State *L);
 	int intf_heal_unit(lua_State *L);
 	int intf_message(lua_State *L);
-	int intf_open_help(lua_State *L);
 	int intf_play_sound(lua_State *L);
 	int intf_print(lua_State *L);
 	void put_unit_helper(const map_location& loc);
@@ -142,7 +138,6 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_is_skipping_messages(lua_State *L);
 	int intf_skip_messages(lua_State *L);
 	int intf_get_locations(lua_State *L);
-	int intf_get_villages(lua_State *L);
 	int intf_match_location(lua_State *L);
 	int intf_match_side(lua_State *L);
 	int intf_set_side_id(lua_State *L);
@@ -154,8 +149,10 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_add_event(lua_State *L);
 	int intf_remove_event(lua_State *L);
 	int intf_color_adjust(lua_State *L);
+	int intf_get_color_adjust(lua_State *L);
 	int intf_delay(lua_State *L);
-	int intf_label(lua_State *L, bool add);
+	int intf_add_label(lua_State *L);
+	int intf_remove_label(lua_State *L);
 	int intf_get_label(lua_State* L);
 	int intf_redraw(lua_State *L);
 	int intf_replace_schedule(lua_State *l);

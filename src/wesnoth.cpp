@@ -33,6 +33,7 @@
 #include "gui/dialogs/end_credits.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/message.hpp"      // for show_error_message
+#include "gui/dialogs/migrate_version_selection.hpp"
 #include "gui/dialogs/title_screen.hpp" // for title_screen, etc
 #include "gui/gui.hpp"                  // for init
 #include "picture.hpp"                    // for flush_cache, etc
@@ -241,7 +242,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 		int read = 0;
 
 		// use static preproc_define::read_pair(config) to make a object
-		for(const config::any_child& value : cfg.all_children_range()) {
+		for(const config::any_child value : cfg.all_children_range()) {
 			const preproc_map::value_type def = preproc_define::read_pair(value.cfg);
 			input_macros[def.first] = def.second;
 			++read;
@@ -778,6 +779,11 @@ static int do_gameloop(const std::vector<std::string>& args)
 	const gui2::event::manager gui_event_manager;
 
 	game_config_manager config_manager(cmdline_opts);
+
+	if(game_config::check_migration) {
+		game_config::check_migration = false;
+		gui2::dialogs::migrate_version_selection::execute();
+	}
 
 	gui2::dialogs::loading_screen::display([&res, &config_manager, &cmdline_opts]() {
 		gui2::dialogs::loading_screen::progress(loading_stage::load_config);

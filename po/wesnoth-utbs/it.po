@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-20 11:49 UTC\n"
-"PO-Revision-Date: 2021-05-23 22:20+0200\n"
+"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
+"PO-Revision-Date: 2021-06-27 13:57+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -38,7 +38,7 @@ msgid ""
 "journey to find a new home.\n"
 "\n"
 msgstr ""
-"Nel lontano futuro una piccola brigata di elfi lotta per la sopravvivenza "
+"Nel lontano futuro, una piccola brigata di elfi lotta per la sopravvivenza "
 "fra le rovine di imperi caduti. Conduci via dal deserto il tuo popolo con un "
 "epico viaggio alla ricerca di una nuova patria.\n"
 "\n"
@@ -63,8 +63,8 @@ msgstr "Combattente"
 msgid "Difficult"
 msgstr "Difficile"
 
-#. [advancement]: id=warrior_1
 #. [campaign]: id=Under_the_Burning_Suns
+#. [advancement]: id=warrior_1
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:44
 msgid "Warrior"
@@ -410,8 +410,8 @@ msgstr "Seil"
 msgid "Kaleh, Nym, help us!"
 msgstr "Kaleh, Nym, aiutateci!"
 
-#. [message]: speaker=Kaleh
 #. [message]: speaker=Nym
+#. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:385
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:581
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:781
@@ -1171,8 +1171,8 @@ msgstr ""
 msgid "Do you remember anything about these sands?"
 msgstr "Ti ricordi niente di queste sabbie?"
 
-#. [message]: speaker=narrator
 #. [unit]: type=Defeated Corrupted Quenoth Elf, id=Garak_defeated
+#. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:302
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1713
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1901
@@ -3461,8 +3461,8 @@ msgstr ""
 "Qualche strana influenza mi ha spinto a venire qui, ma non so che cosa mi "
 "facesse pensare che sarebbe stato utile."
 
-#. [unit]: type=Dark Assassin1, id=Cloaked Figure
 #. [unit]: type=Dark Assassin2, id=Cloaked Figure
+#. [unit]: type=Dark Assassin1, id=Cloaked Figure
 #. [unit]: type=Dark Assassin3, id=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:966
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2067
@@ -4834,10 +4834,10 @@ msgstr "Quando avrai finito di posizionare i tuoi, farò saltare le cariche."
 msgid "Troll Brute"
 msgstr "Troll bruto"
 
+#. [event]
 #. [unit]: type=Troll
 #. [unit]: type=Troll Rocklobber
 #. [unit]: type=Troll Whelp
-#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:479
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:482
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:486
@@ -5424,10 +5424,10 @@ msgstr "Nel dominio dei nani"
 msgid "Enemies"
 msgstr "Nemici"
 
-#. [side]: id=Great Leader Darmog, type=Great Troll
 #. [side]: id=King Thurongar, type=Dwarvish Lord
 #. [side]: id=Melusand, type=Mermaid Diviner
 #. [side]
+#. [side]: id=Great Leader Darmog, type=Great Troll
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:73
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:52
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:53
@@ -6938,8 +6938,8 @@ msgstr "Prima usciremo da qui, più sarò contenta."
 msgid "Wait, did you feel that?"
 msgstr "Aspettate, avete sentito?"
 
-#. [message]: speaker=Nym
 #. [message]: role=mystic_speaker
+#. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:543
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1753
 msgid "What?"
@@ -8665,10 +8665,10 @@ msgstr ""
 "accampamento al centro della valle. In lontananza a nord vedo qualcosa che "
 "luccica, ma non si capisce cosa sia."
 
+#. [unit]: type=Divine Avatar, id=Eloh
 #. [side]
 #. [unit]: type=Divine Incarnation, id=Eloh
 #. [event]
-#. [unit]: type=Divine Avatar, id=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3177
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1692
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1246
@@ -14982,9 +14982,9 @@ msgstr ""
 msgid "Central Body"
 msgstr "Corpo centrale"
 
-#. [unit_type]: id=Crawling Horror, race=monster
-#. [unit_type]: id=Central Body Base, race=monster
 #. [unit_type]: id=Pulsing Spire, race=monster
+#. [unit_type]: id=Central Body Base, race=monster
+#. [unit_type]: id=Crawling Horror, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Body.cfg:39
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Minion.cfg:26
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Spire.cfg:33
@@ -15192,12 +15192,12 @@ msgid "Naga Guardian"
 msgstr "Guardiano naga"
 
 #. [unit_type]: id=Naga Warden
-#: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Guardians.cfg:25
+#: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Guardians.cfg:19
 msgid "Naga Warden"
 msgstr "Capo guardiano naga"
 
 #. [unit_type]: id=Naga Sentinel
-#: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Guardians.cfg:45
+#: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Guardians.cfg:33
 msgid "Naga Sentinel"
 msgstr "Sentinella naga"
 
@@ -15402,6 +15402,15 @@ msgid ""
 "the death of many a foolish dustbok, it has made them excellent partners to "
 "the Quenoth Elves, who value their speed and agility."
 msgstr ""
+"Le Antilopi delle sabbie sono delle creature agili e aggraziate, la cui "
+"natura timida e pacifica è in netto contrasto con l’asprezza della terra "
+"nella quale vivono. Poiché la terra riarsa non può sostentare delle mandrie "
+"o anche soltanto dei vicini territoriali, le antilopi delle sabbie sono "
+"delle vagabonde solitarie, rimanendo tuttavia ancora socievoli, curiose e "
+"disposte a collaborare con chiunque porti loro del cibo. Sebbene questo "
+"comportamento abbia condotto molte antilopi incontro alla morte, le ha anche "
+"rese delle eccellenti compagne per gli Elfi Quenoth, che apprezzano la loro "
+"velocità ed agilità."
 
 #. [unit_type]: id=Quenoth Fighter, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:5

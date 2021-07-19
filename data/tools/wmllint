@@ -911,6 +911,28 @@ linechanges = (
         ("units/nagas/slasher.png", "units/nagas/dirkfang.png"),
         ("units/nagas/bladewhirler.png", "units/nagas/ophidian.png"),
 
+        # third round of renaming
+        ("units/dunefolk/apothecary.png", "units/dunefolk/herbalist/apothecary.png"),
+        ("units/dunefolk/blademaster.png", "units/dunefolk/soldier/blademaster.png"),
+        ("units/dunefolk/burner.png", "units/dunefolk/burner/burner.png"),
+        ("units/dunefolk/cataphract.png", "units/dunefolk/rider/cataphract.png"),
+        ("units/dunefolk/explorer.png", "units/dunefolk/rover/explorer.png"),
+        ("units/dunefolk/firetrooper.png", "units/dunefolk/burner/firetrooper.png"),
+        ("units/dunefolk/harrier.png", "units/dunefolk/skirmisher/harrier.png"),
+        ("units/dunefolk/herbalist.png", "units/dunefolk/herbalist/herbalist.png"),
+        ("units/dunefolk/marauder.png", "units/dunefolk/rider/marauder.png"),
+        ("units/dunefolk/raider.png", "units/dunefolk/rider/raider.png"),
+        ("units/dunefolk/rider.png", "units/dunefolk/rider/rider.png"),
+        ("units/dunefolk/rover.png", "units/dunefolk/rover/rover.png"),
+        ("units/dunefolk/scorcher.png", "units/dunefolk/burner/scorcher.png"),
+        ("units/dunefolk/skirmisher.png", "units/dunefolk/skirmisher/skirmisher.png"),
+        ("units/dunefolk/soldier.png", "units/dunefolk/soldier/soldier.png"),
+        ("units/dunefolk/spearguard.png", "units/dunefolk/soldier/spearguard.png"),
+        ("units/dunefolk/spearmaster.png", "units/dunefolk/soldier/spearmaster.png"),
+        ("units/dunefolk/sunderer.png", "units/dunefolk/rider/sunderer.png"),
+        ("units/dunefolk/swordsman.png", "units/dunefolk/soldier/swordsman.png"),
+        ("units/dunefolk/warmaster.png", "units/dunefolk/soldier/warmaster.png"),
+
         # unit ids
         ("Arif", "Dune Soldier"),
         ("Ghazi", "Dune Swordsman"),
@@ -1116,11 +1138,12 @@ def is_translatable(key):
         "editor_name", "end_text", "difficulty_descriptions", "female_message",
         "female_name_inactive", "female_names", "female_text", "help_text",
         "help_topic_text", "label", "male_message", "male_names", "male_text",
-        "message", "name", "name_inactive", "new_game_title", "note",
+        "message", "name", "names", "name_inactive", "new_game_title", "note",
         "option_description", "option_name", "order", "plural_name", "prefix",
         "reason", "set_description", "source", "story", "summary", "victory_string",
         "defeat_string", "gold_carryover_string", "notes_string", "text", "title",
-        "title2", "tooltip", "translator_comment", "user_team_name", "side_name"
+        "title2", "tooltip", "translator_comment", "user_team_name", "side_name",
+        "special_note"
         )
     return key in translatables or (key.startswith(("type_", "range_")) and key != "type_adv_tree")
 
@@ -1479,9 +1502,6 @@ def global_sanity_check(filename, lines):
             temp_movetypes = []
             temp_races = []
             temp_advances = []
-            arcane_note_needed = False
-            spirit_note_needed = False
-            defense_cap_note_needed = False
             continue
         elif nav.element == "[/unit_type]":
             if unit_id and unit_usage:
@@ -1500,23 +1520,11 @@ def global_sanity_check(filename, lines):
                 derived_units.append((filename, nav.lineno + 1, unit_id, base_unit))
             if unit_id and not base_unit:
                 missing_notes = []
-                if arcane_note_needed and "{NOTE_ARCANE}" not in notes:
-                    missing_notes.append("{NOTE_ARCANE}")
-                if spirit_note_needed and "{NOTE_SPIRIT}" not in notes:
-                    missing_notes.append("{NOTE_SPIRIT}")
-                if defense_cap_note_needed and "{NOTE_DEFENSE_CAP}" not in notes:
-                    missing_notes.append("{NOTE_DEFENSE_CAP}")
                 for trait in traits:
                     tn = trait_note[trait]
                     if tn not in notes and tn not in missing_notes:
                         missing_notes.append(tn)
                 missing_traits = []
-                if (not arcane_note_needed) and "{NOTE_ARCANE}" in notes:
-                    missing_traits.append("type=arcane")
-                if (not spirit_note_needed) and "{NOTE_SPIRIT}" in notes:
-                    missing_traits.append("movement_type=undeadspirit")
-                if (not defense_cap_note_needed) and "{NOTE_DEFENSE_CAP}" in notes:
-                    missing_traits.append("movement_type=mounted or [defense] tag")
                 for note in notes:
                     for nt in note_trait[note]: # defaultdict makes nt a list, not a string!
                         if nt in traits:
@@ -1553,9 +1561,6 @@ def global_sanity_check(filename, lines):
             temp_movetypes = []
             temp_races = []
             temp_advances = []
-            arcane_note_needed = False
-            spirit_note_needed = False
-            defense_cap_note_needed = False
         # the glob pattern matches any WML tag starting with filter, including [filter] itself
         if '[unit_type]' in nav.ancestors() and not nav.glob_ancestors("[[]filter*[]]"):
             try:
@@ -1575,10 +1580,6 @@ def global_sanity_check(filename, lines):
                 elif key == "movement_type":
                     if '{' not in value:
                         temp_movetypes.append((filename, nav.lineno + 1, value))
-                    if value == "undeadspirit":
-                        spirit_note_needed = True
-                    elif value == "mounted":
-                        defense_cap_note_needed = True
                 elif key == "race":
                     if '{' not in value:
                         unit_race = value
@@ -1587,10 +1588,6 @@ def global_sanity_check(filename, lines):
                     advancements = value
                     if advancements.strip() != "null":
                         temp_advances.append((filename, nav.lineno + 1, advancements))
-                elif key == "type" and value == "arcane" and "[attack]" in nav.ancestors():
-                    arcane_note_needed = True
-                elif "[defense]" in nav.ancestors() and re.match(r"\-\d+",value):
-                    defense_cap_note_needed = True
             except TypeError:
                 pass
             precomment = nav.text
@@ -1598,10 +1595,6 @@ def global_sanity_check(filename, lines):
                 precomment = nav.text[:nav.text.find("#")]
             if "{NOTE" in precomment:
                 has_special_notes = True
-            # these special cases are handled better outside of notepairs
-            for note in ("{NOTE_DEFENSE_CAP}","{NOTE_SPIRIT}","{NOTE_ARCANE}"):
-                if note in precomment:
-                    notes.append(note)
             for (p, q) in notepairs:
                 if p in precomment:
                     traits.append(p)

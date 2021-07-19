@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.15\n"
+"Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-20 11:48 UTC\n"
-"PO-Revision-Date: 2021-04-05 15:01+0800\n"
+"POT-Creation-Date: 2021-06-23 15:36 UTC\n"
+"PO-Revision-Date: 2021-06-25 19:42+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.4.3\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #  原本的翻譯是「新大陸」，但實際上並不是到一個新大陸，而是到一個沒什麼人去過的山谷。
@@ -311,9 +311,9 @@ msgstr ""
 "「精靈」風格的村莊表示它是一所大學。在你的回合開始時，待在大學的法師會自動增"
 "加你所選擇的研究目標的進度。對著大學中的法師按下滑鼠右鍵可以改變研究目標。"
 
+#. [set_menu_item]: id=anl_diplomacy
 #. [message]: speaker=narrator
 #. [option]
-#. [set_menu_item]: id=anl_diplomacy
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:69
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:147
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:217

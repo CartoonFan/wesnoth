@@ -295,13 +295,13 @@ static int impl_add_animation(lua_State* L)
 
 		lua_getfield(L, 5, "value");
 		if(lua_isnumber(L, -1)) {
-			v1 = lua_tonumber(L, -1);
+			v1 = lua_tointeger(L, -1);
 		} else if(lua_istable(L, -1)) {
 			lua_rawgeti(L, -1, 1);
-			v1 = lua_tonumber(L, -1);
+			v1 = lua_tointeger(L, -1);
 			lua_pop(L, 1);
 			lua_rawgeti(L, -1, 2);
-			v2 = lua_tonumber(L, -1);
+			v2 = lua_tointeger(L, -1);
 			lua_pop(L, 1);
 		} else if(!lua_isnoneornil(L, -1)) {
 			return luaW_type_error(L, 5, "value", "number or array of two numbers");
@@ -332,7 +332,7 @@ static int impl_add_animation(lua_State* L)
 			lua_rawgeti(L, idx, 1); // red @ -3
 			lua_rawgeti(L, idx, 2); // green @ -2
 			lua_rawgeti(L, idx, 3); // blue @ -1
-			color = color_t(lua_tonumber(L, -3), lua_tonumber(L, -2), lua_tonumber(L, -1));
+			color = color_t(lua_tointeger(L, -3), lua_tointeger(L, -2), lua_tointeger(L, -1));
 			lua_pop(L, 3);
 		} else if(!lua_isnoneornil(L, -1)) {
 			return luaW_type_error(L, 5, "color", "array of three numbers");
@@ -772,7 +772,7 @@ int game_lua_kernel::intf_override_shroud(lua_State *L)
 			t.clear_shroud(loc);
 		}
 	} else {
-		return luaL_argerror(L, 2, "expected list of locations");
+		return luaW_type_error(L, 2, "list of locations");
 	}
 
 	game_display_->labels().recalculate_shroud();
@@ -790,7 +790,7 @@ static int intf_parse_shroud_bitmap(lua_State* L)
 	std::set<map_location> locs;
 	for(int x = 1; x <= temp.width(); x++) {
 		for(int y = 1; y <= temp.height(); y++) {
-			if(temp.value(x, y)) {
+			if(!temp.value(x, y)) {
 				locs.emplace(x, y, wml_loc());
 			}
 		}
@@ -905,9 +905,8 @@ static void luaW_push_tod(lua_State* L, const time_of_day& tod)
 	lua_setfield(L, -2, "blue");
 }
 
-// A schedule object is just a location with a special metatable.
-// This is also valid for time area objects, which also have an "index" key identifying them.
-// The index is a secondary means of identification in case it has no locations.
+// A schedule object is an index with a special metatable.
+// The global schedule uses index -1
 void game_lua_kernel::luaW_push_schedule(lua_State* L, int area_index)
 {
 	lua_newuserdatauv(L, 0, 1);
@@ -1119,10 +1118,10 @@ int game_lua_kernel::intf_get_time_of_day(lua_State *L)
 	}
 
 	if(lua_isnumber(L, 2)) {
-		for_turn = luaL_checkinteger(L, 1);
+		for_turn = luaL_checkinteger(L, 2);
 		int number_of_turns = tod_man().number_of_turns();
 		if(for_turn < 1 || (number_of_turns != -1 && for_turn > number_of_turns)) {
-			return luaL_argerror(L, 1, "turn number out of range");
+			return luaL_argerror(L, 2, "turn number out of range");
 		}
 	}
 
@@ -1425,6 +1424,134 @@ static int impl_end_level_data_collect(lua_State* L)
 	return 0;
 }
 
+static int impl_mp_settings_get(lua_State* L)
+{
+	void* p = lua_touserdata(L, lua_upvalueindex(1));
+	const mp_game_settings& settings = static_cast<play_controller*>(p)->get_mp_settings();
+	if(lua_type(L, 2) == LUA_TNUMBER) {
+		// Simulates a WML table with one [options] child and a variable number of [addon] children
+		// TODO: Deprecate this -> mp_settings.options and mp_settings.addons
+		size_t i = luaL_checkinteger(L, 2);
+		if(i == 1) {
+			lua_createtable(L, 2, 0);
+			lua_pushstring(L, "options");
+			lua_seti(L, -2, 1);
+			luaW_pushconfig(L, settings.options);
+			lua_seti(L, -2, 2);
+			return 1;
+		} else if(i >= 2) {
+			i -= 2;
+			if(i < settings.addons.size()) {
+				auto iter = settings.addons.begin();
+				std::advance(iter, i);
+				config cfg;
+				iter->second.write(cfg);
+				cfg["id"] = iter->first;
+
+				lua_createtable(L, 2, 0);
+				lua_pushstring(L, "addon");
+				lua_seti(L, -2, 1);
+				luaW_pushconfig(L, cfg);
+				lua_seti(L, -2, 2);
+				return 1;
+			}
+		}
+	} else {
+		char const *m = luaL_checkstring(L, 2);
+		return_string_attrib("scenario", settings.name);
+		return_string_attrib("game_name", settings.name);
+		return_string_attrib("hash", settings.hash);
+		return_string_attrib("mp_era_name", settings.mp_era_name);
+		return_string_attrib("mp_scenario", settings.mp_scenario);
+		return_string_attrib("mp_scenario_name", settings.mp_scenario_name);
+		return_string_attrib("mp_campaign", settings.mp_campaign);
+		return_string_attrib("side_users", utils::join_map(settings.side_users));
+		return_int_attrib("experience_modifier", settings.xp_modifier);
+		return_bool_attrib("mp_countdown", settings.mp_countdown);
+		return_int_attrib("mp_countdown_init_time", settings.mp_countdown_init_time);
+		return_int_attrib("mp_countdown_turn_bonus", settings.mp_countdown_turn_bonus);
+		return_int_attrib("mp_countdown_reservoir_bonus", settings.mp_countdown_reservoir_time);
+		return_int_attrib("mp_countdown_action_bonus", settings.mp_countdown_action_bonus);
+		return_int_attrib("mp_num_turns", settings.num_turns);
+		return_int_attrib("mp_village_gold", settings.village_gold);
+		return_int_attrib("mp_village_support", settings.village_support);
+		return_bool_attrib("mp_fog", settings.fog_game);
+		return_bool_attrib("mp_shroud", settings.shroud_game);
+		return_bool_attrib("mp_use_map_settings", settings.use_map_settings);
+		return_bool_attrib("mp_random_start_time", settings.random_start_time);
+		return_bool_attrib("observer", settings.allow_observers);
+		return_bool_attrib("allow_observers", settings.allow_observers);
+		return_bool_attrib("private_replay", settings.private_replay);
+		return_bool_attrib("shuffle_sides", settings.shuffle_sides);
+		return_string_attrib("random_faction_mode", settings.random_faction_mode.to_string());
+		return_cfgref_attrib("options", settings.options);
+		if(strcmp(m, "savegame") == 0) {
+			auto savegame = settings.saved_game;
+			if(savegame == mp_game_settings::SAVED_GAME_MODE::NONE) {
+				lua_pushboolean(L, false);
+			} else {
+				lua_push(L, savegame.to_string());
+			}
+			return 1;
+		}
+		if(strcmp(m, "side_players") == 0) {
+			lua_push(L, settings.side_users);
+			return 1;
+		}
+		if(strcmp(m, "addons") == 0) {
+			for(const auto& [id, addon] : settings.addons) {
+				lua_createtable(L, 0, 4);
+				lua_push(L, id);
+				lua_setfield(L, -2, "id");
+				lua_push(L, addon.name);
+				lua_setfield(L, -2, "name");
+				lua_pushboolean(L, addon.required);
+				lua_setfield(L, -2, "required");
+				if(addon.min_version) {
+					luaW_getglobal(L, "wesnoth", "version");
+					lua_push(L, addon.min_version->str());
+					lua_call(L, 1, 1);
+					lua_setfield(L, -2, "min_version");
+				}
+				if(addon.version) {
+					luaW_getglobal(L, "wesnoth", "version");
+					lua_push(L, addon.version->str());
+					lua_call(L, 1, 1);
+					lua_setfield(L, -2, "version");
+				}
+				lua_createtable(L, addon.content.size(), 0);
+				for(const auto& content : addon.content) {
+					lua_createtable(L, 0, 3);
+					lua_push(L, content.id);
+					lua_setfield(L, -2, "id");
+					lua_push(L, content.name);
+					lua_setfield(L, -2, "name");
+					lua_push(L, content.type);
+					lua_setfield(L, -2, "type");
+					lua_seti(L, -2, lua_rawlen(L, -2) + 1);
+				}
+				lua_setfield(L, -2, "content");
+			}
+			return 1;
+		}
+		// Deprecated things that were moved out of mp_settings and into game_classification
+		const game_classification& game = static_cast<play_controller*>(p)->get_classification();
+		return_string_attrib_deprecated("mp_era", "wesnoth.scenario.mp_settings", INDEFINITE, "1.17", "Use wesnoth.scenario.era.id instead", game.era_id);
+		return_string_attrib_deprecated("active_mods", "wesnoth.scenario.mp_settings", INDEFINITE, "1.17", "Use wesnoth.scenario.modifications instead (returns an array of modification tables)", utils::join(game.active_mods));
+		// Expose the raw config; this is a way to ensure any new stuff can be accessed even if someone forgot to add it here.
+		return_cfgref_attrib("__cfg", settings.to_config());
+	}
+	return 0;
+}
+
+static int impl_mp_settings_len(lua_State* L)
+{
+	void* p = lua_touserdata(L, lua_upvalueindex(1));
+	const mp_game_settings& settings = static_cast<play_controller*>(p)->get_mp_settings();
+	lua_pushinteger(L, settings.addons.size() + 1);
+	return 1;
+}
+
 /**
  * Gets some scenario data (__index metamethod).
  * - Arg 1: userdata (ignored).
@@ -1440,6 +1567,7 @@ int game_lua_kernel::impl_scenario_get(lua_State *L)
 	return_int_attrib("turns", tod_man().number_of_turns());
 	return_string_attrib("next", gamedata().next_scenario());
 	return_string_attrib("id", gamedata().get_id());
+	return_tstring_attrib("name", play_controller_.get_scenario_name());
 	return_vector_string_attrib("defeat_music", gamedata().get_defeat_music());
 	return_vector_string_attrib("victory_music", gamedata().get_victory_music());
 	if(strcmp(m, "resources") == 0) {
@@ -1455,7 +1583,7 @@ int game_lua_kernel::impl_scenario_get(lua_State *L)
 	return_string_attrib("type", classification.campaign_type.to_string());
 	return_string_attrib("difficulty", classification.difficulty);
 	return_bool_attrib("show_credits", classification.end_credits);
-	return_string_attrib("end_text", classification.end_text);
+	return_tstring_attrib("end_text", classification.end_text);
 	return_int_attrib("end_text_duration", classification.end_text_duration);
 	if(!classification.campaign.empty()) {
 		return_cfgref_attrib("campaign", find_addon("campaign", classification.campaign));
@@ -1489,7 +1617,21 @@ int game_lua_kernel::impl_scenario_get(lua_State *L)
 	}
 
 	if(classification.is_multiplayer()) {
-		return_cfgref_attrib("mp_settings", play_controller_.get_mp_settings().to_config());
+		if(strcmp(m, "mp_settings") == 0) {
+			lua_newuserdatauv(L, 0, 0);
+			if(luaL_newmetatable(L, "mp settings")) {
+				lua_pushlightuserdata(L, &play_controller_);
+				lua_pushcclosure(L, impl_mp_settings_get, 1);
+				lua_setfield(L, -2, "__index");
+				lua_pushlightuserdata(L, &play_controller_);
+				lua_pushcclosure(L, impl_mp_settings_len, 1);
+				lua_setfield(L, -2, "__len");
+				lua_pushstring(L, "mp settings");
+				lua_setfield(L, -2, "__metatable");
+			}
+			lua_setmetatable(L, -2);
+			return 1;
+		}
 		return_cfgref_attrib("era", find_addon("era", classification.era_id));
 	}
 	return 0;
@@ -1514,7 +1656,7 @@ int game_lua_kernel::impl_scenario_set(lua_State *L)
 
 	game_classification& classification = play_controller_.get_classification();
 	modify_bool_attrib("show_credits", classification.end_credits = value);
-	modify_string_attrib("end_text", classification.end_text = value);
+	modify_tstring_attrib("end_text", classification.end_text = value);
 	modify_int_attrib("end_text_duration", classification.end_text_duration = value);
 	if(strcmp(m, "end_level_data") == 0) {
 		vconfig cfg(luaW_checkvconfig(L, 3));
@@ -1671,8 +1813,9 @@ int game_lua_kernel::intf_end_turn(lua_State* L)
 	//note that next_player_number = 1, next_player_number = nteams+1 both set the next team to be the first team
 	//but the later will make the turn counter change aswell fire turn end events accoringly etc.
 	if (!lua_isnoneornil(L, 1)) {
-		int npn = luaL_checknumber(L, 1);
-		if (npn <= 0 /*TODO: || npn > 2*nteams*/) {
+		int max = 2 * teams().size();
+		int npn = luaL_checkinteger(L, 1);
+		if (npn <= 0 || npn > max) {
 			return luaL_argerror(L, 1, "side number out of range");
 		}
 		resources::controller->gamestate().next_player_number_ = npn;
@@ -1760,7 +1903,7 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 				// If there's a unit, we have a valid side, so fall back to legacy behaviour.
 				// If we don't have a unit, legacy behaviour would be a crash, so let's not.
 				if(u) see_all = true;
-				deprecated_message("wesnoth.find_path with viewing_side=0 (or an invalid side)", DEP_LEVEL::FOR_REMOVAL, {1, 17, 0}, "To consider fogged and hidden units, use ignore_visibility=true instead.");
+				deprecated_message("wesnoth.paths.find_path with viewing_side=0 (or an invalid side)", DEP_LEVEL::FOR_REMOVAL, {1, 17, 0}, "To consider fogged and hidden units, use ignore_visibility=true instead.");
 			}
 		}
 		lua_pop(L, 1);
@@ -1774,7 +1917,7 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 	}
 	else if (lua_isfunction(L, arg))
 	{
-		deprecated_message("wesnoth.find_path with cost_function as last argument", DEP_LEVEL::FOR_REMOVAL, {1, 17, 0}, "Use calculate=cost_function inside the path options table instead.");
+		deprecated_message("wesnoth.paths.find_path with cost_function as last argument", DEP_LEVEL::FOR_REMOVAL, {1, 17, 0}, "Use calculate=cost_function inside the path options table instead.");
 		calc.reset(new lua_pathfind_cost_calculator(L, arg));
 	}
 
@@ -1782,7 +1925,8 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 
 	if(!ignore_teleport) {
 		if(viewing_side == 0) {
-			return luaL_error(L, "wesnoth.find_path: ignore_teleport=false requires a valid viewing_side");
+			lua_warning(L, "wesnoth.paths.find_path: ignore_teleport=false requires a valid viewing_side; continuing with ignore_teleport=true", false);
+			ignore_teleport = true;
 		} else {
 			teleport_locations = pathfind::get_teleport_locations(*u, board().get_team(viewing_side), see_all, ignore_units);
 		}
@@ -1804,11 +1948,7 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 	lua_createtable(L, nb, 0);
 	for (int i = 0; i < nb; ++i)
 	{
-		lua_createtable(L, 2, 0);
-		lua_pushinteger(L, res.steps[i].wml_x());
-		lua_rawseti(L, -2, 1);
-		lua_pushinteger(L, res.steps[i].wml_y());
-		lua_rawseti(L, -2, 2);
+		luaW_pushlocation(L, res.steps[i]);
 		lua_rawseti(L, -2, i + 1);
 	}
 	lua_pushinteger(L, res.move_cost);
@@ -1878,7 +2018,7 @@ int game_lua_kernel::intf_find_reach(lua_State *L)
 	for (int i = 0; i < nb; ++i)
 	{
 		pathfind::paths::step &s = res.destinations[i];
-		lua_createtable(L, 2, 0);
+		luaW_push_namedtuple(L, {"x", "y", "moves_left"});
 		lua_pushinteger(L, s.curr.wml_x());
 		lua_rawseti(L, -2, 1);
 		lua_pushinteger(L, s.curr.wml_y());
@@ -1926,23 +2066,26 @@ int game_lua_kernel::intf_find_vision_range(lua_State *L)
 	actions::create_jamming_map(jamming_map, resources::gameboard->get_team(u->side()));
 	pathfind::vision_path res(*u, u->get_location(), jamming_map);
 
-	auto vision_set = res.edges;
-	for(auto d : res.destinations)
-	{
-		vision_set.insert(d.curr);
-	}
-
-	lua_createtable(L, vision_set.size(), 0);
-	int i = 1;
-	for (const map_location& loc : vision_set)
-	{
-		lua_createtable(L, 2, 0);
-		lua_pushinteger(L, loc.wml_x());
+	lua_createtable(L, res.destinations.size() + res.edges.size(), 0);
+	for(const auto& d : res.destinations) {
+		luaW_push_namedtuple(L, {"x", "y", "vision_left"});
+		lua_pushinteger(L, d.curr.wml_x());
 		lua_rawseti(L, -2, 1);
-		lua_pushinteger(L, loc.wml_y());
+		lua_pushinteger(L, d.curr.wml_y());
 		lua_rawseti(L, -2, 2);
-		lua_rawseti(L, -2, i);
-		++i;
+		lua_pushinteger(L, d.move_left);
+		lua_rawseti(L, -2, 3);
+		lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
+	}
+	for(const auto& e : res.edges) {
+		luaW_push_namedtuple(L, {"x", "y", "vision_left"});
+		lua_pushinteger(L, e.wml_x());
+		lua_rawseti(L, -2, 1);
+		lua_pushinteger(L, e.wml_y());
+		lua_rawseti(L, -2, 2);
+		lua_pushinteger(L, -1);
+		lua_rawseti(L, -2, 3);
+		lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
 	}
 	return 1;
 }
@@ -2146,7 +2289,7 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 	int counter = 1;
 	for (const map_location& loc : location_set)
 	{
-		lua_createtable(L, 4, 0);
+		luaW_push_namedtuple(L, {"x", "y", "cost", "reach"});
 
 		lua_pushinteger(L, loc.wml_x());
 		lua_rawseti(L, -2, 1);
@@ -2752,7 +2895,7 @@ int game_lua_kernel::intf_play_sound(lua_State *L)
 {
 	if (play_controller_.is_skipping_replay()) return 0;
 	char const *m = luaL_checkstring(L, 1);
-	int repeats = luaL_optinteger(L, 2, 1);
+	int repeats = luaL_optinteger(L, 2, 0);
 	sound::play_sound(m, sound::SOUND_FX, repeats);
 	return 0;
 }
@@ -3007,47 +3150,7 @@ int game_lua_kernel::intf_get_locations(lua_State *L)
 		t_filter.get_locations(res, true);
 	}
 
-	lua_createtable(L, res.size(), 0);
-	int i = 1;
-	for (const map_location& loc : res)
-	{
-		lua_createtable(L, 2, 0);
-		lua_pushinteger(L, loc.wml_x());
-		lua_rawseti(L, -2, 1);
-		lua_pushinteger(L, loc.wml_y());
-		lua_rawseti(L, -2, 2);
-		lua_rawseti(L, -2, i);
-		++i;
-	}
-	return 1;
-}
-
-/**
- * Gets all the villages matching a given filter, or all the villages on the map if no filter is given.
- * - Arg 1: WML table (optional).
- * - Ret 1: array of integer pairs.
- */
-int game_lua_kernel::intf_get_villages(lua_State *L)
-{
-	std::vector<map_location> locs = map().villages();
-	lua_newtable(L);
-	int i = 1;
-
-	vconfig filter = luaW_checkvconfig(L, 1);
-
-	filter_context & fc = game_state_;
-	for(std::vector<map_location>::const_iterator it = locs.begin(); it != locs.end(); ++it) {
-		bool matches = terrain_filter(filter, &fc, false).match(*it);
-		if (matches) {
-			lua_createtable(L, 2, 0);
-			lua_pushinteger(L, it->wml_x());
-			lua_rawseti(L, -2, 1);
-			lua_pushinteger(L, it->wml_y());
-			lua_rawseti(L, -2, 2);
-			lua_rawseti(L, -2, i);
-			++i;
-		}
-	}
+	luaW_push_locationset(L, res);
 	return 1;
 }
 
@@ -3455,6 +3558,18 @@ int game_lua_kernel::intf_color_adjust(lua_State *L)
 	return 0;
 }
 
+int game_lua_kernel::intf_get_color_adjust(lua_State *L)
+{
+	if(game_display_) {
+		auto color = game_display_->get_color_overlay();
+		lua_pushinteger(L, color.r);
+		lua_pushinteger(L, color.g);
+		lua_pushinteger(L, color.b);
+		return 3;
+	}
+	return 0;
+}
+
 /**
  * Delays engine for a while.
  * - Arg 1: integer.
@@ -3483,7 +3598,7 @@ int game_lua_kernel::intf_delay(lua_State *L)
 	return 0;
 }
 
-int game_lua_kernel::intf_label(lua_State *L, bool add)
+int game_lua_kernel::intf_add_label(lua_State *L)
 {
 	if (game_display_) {
 		vconfig cfg(luaW_checkvconfig(L, 1));
@@ -3492,8 +3607,27 @@ int game_lua_kernel::intf_label(lua_State *L, bool add)
 
 		terrain_label label(screen.labels(), cfg.get_config());
 
-		screen.labels().set_label(label.location(), add ? label.text() : "", label.creator(), label.team_name(), label.color(),
+		screen.labels().set_label(label.location(), label.text(), label.creator(), label.team_name(), label.color(),
 				label.visible_in_fog(), label.visible_in_shroud(), label.immutable(), label.category(), label.tooltip());
+	}
+	return 0;
+}
+
+int game_lua_kernel::intf_remove_label(lua_State *L)
+{
+	if (game_display_) {
+		map_location loc = luaW_checklocation(L, 1);
+		std::string team_name;
+
+		// If there's only one parameter and it's a table, check if it contains team_name
+		if(lua_gettop(L) == 1 && lua_istable(L, 1)) {
+			using namespace std::literals;
+			team_name = luaW_table_get_def(L, 1, "team_name", ""sv);
+		} else {
+			team_name = luaL_optstring(L, 2, "");
+		}
+
+		game_display_->labels().set_label(loc, "", -1, team_name);
 	}
 	return 0;
 }
@@ -3593,7 +3727,7 @@ static int cfun_exec_candidate_action(lua_State *L)
 		ca->execute();
 		return 0;
 	}
-	lua_pushinteger(L, ca->evaluate());
+	lua_pushnumber(L, ca->evaluate());
 	return 1;
 }
 
@@ -3775,19 +3909,42 @@ int game_lua_kernel::intf_cancel_action(lua_State*)
 	return 0;
 }
 
-/** Adding new time_areas dynamically with Standard Location Filters. */
+/** Adding new time_areas dynamically with Standard Location Filters.
+ * Arg 1: Area ID
+ * Arg 2: Area locations (either a filter or a list of locations)
+ * Arg 3: (optional) Area schedule - WML table with [time] tags and optional current_time=
+ */
 int game_lua_kernel::intf_add_time_area(lua_State * L)
 {
 	log_scope("time_area");
 
-	vconfig cfg(luaW_checkvconfig(L, 1));
-	const std::string id = cfg["id"];
-
+	std::string id;
 	std::set<map_location> locs;
-	const terrain_filter filter(cfg, &game_state_, false);
-	filter.get_locations(locs, true);
-	config parsed_cfg = cfg.get_parsed_config();
-	tod_man().add_time_area(id, locs, parsed_cfg);
+	config times;
+
+	if(lua_gettop(L) == 1) {
+		vconfig cfg = luaW_checkvconfig(L, 1);
+		deprecated_message("Single-argument wesnoth.map.place_area is deprecated. Instead, pass ID, filter, and schedule as three separate arguments.", DEP_LEVEL::INDEFINITE, {1, 17, 0});
+		id = cfg["id"].str();
+		const terrain_filter filter(cfg, &game_state_, false);
+		filter.get_locations(locs, true);
+		times = cfg.get_parsed_config();
+	} else {
+		id = luaL_checkstring(L, 1);
+		if(!lua_isnoneornil(L, 3))
+			times = luaW_checkconfig(L, 3);
+		vconfig cfg{config()};
+		if(luaW_tovconfig(L, 2, cfg)) {
+			// Second argument is a location filter
+			const terrain_filter filter(cfg, &game_state_, false);
+			filter.get_locations(locs, true);
+		} else {
+			// Second argument is an array of locations
+			luaW_check_locationset(L, 2);
+		}
+	}
+
+	tod_man().add_time_area(id, locs, times);
 	LOG_LUA << "Lua inserted time_area '" << id << "'\n";
 	return 0;
 }
@@ -3832,11 +3989,12 @@ int game_lua_kernel::intf_get_time_area(lua_State* L)
 int game_lua_kernel::intf_replace_schedule(lua_State * L)
 {
 	map_location loc;
-	if(luaW_tolocation(L, 1, loc)) {
+	if(luaL_testudata(L, 1, "schedule")) {
 		// Replace the global schedule with a time area's schedule
-		// The expectation is that you call schedule.replace(time_area.schedule),
-		// rather than passing a literal location.
-
+		// Replacing the global schedule with the global schedule
+		// is also supported but obviously a no-op
+		int area = luaW_check_schedule(L, 1);
+		if(area >= 0) tod_man().replace_schedule(tod_man().times(area));
 	} else {
 		vconfig cfg = luaW_checkvconfig(L, 1);
 
@@ -4053,8 +4211,7 @@ int game_lua_kernel::intf_toggle_fog(lua_State *L, const bool clear)
 			sides.insert(t.side()+1);
 		}
 	}
-	const auto& v_locs = lua_check<std::vector<map_location>>(L, lua_istable(L, 2) ? 2 : 1);
-	std::set<map_location> locs(v_locs.begin(), v_locs.end());
+	const auto& locs = luaW_check_locationset(L, lua_istable(L, 2) ? 2 : 1);
 
 	for(const int &side_num : sides) {
 		if(side_num < 1 || static_cast<std::size_t>(side_num) > teams().size()) {
@@ -4281,8 +4438,8 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{"get_owner", &dispatch<&game_lua_kernel::intf_get_village_owner>},
 		{"set_owner", &dispatch<&game_lua_kernel::intf_set_village_owner>},
 		// Label operations
-		{"add_label", &dispatch2<&game_lua_kernel::intf_label, true>},
-		{"remove_label", &dispatch2<&game_lua_kernel::intf_label, false>},
+		{"add_label", &dispatch<&game_lua_kernel::intf_add_label>},
+		{"remove_label", &dispatch<&game_lua_kernel::intf_remove_label>},
 		{"get_label", &dispatch<&game_lua_kernel::intf_get_label>},
 		// Time area operations
 		{"place_area", &dispatch<&game_lua_kernel::intf_add_time_area>},
@@ -4383,6 +4540,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	static luaL_Reg const intf_callbacks[] {
 		{"add_hex_overlay", &dispatch<&game_lua_kernel::intf_add_tile_overlay>},
 		{"remove_hex_overlay", &dispatch<&game_lua_kernel::intf_remove_tile_overlay>},
+		{"get_color_adjust", &dispatch<&game_lua_kernel::intf_get_color_adjust>},
 		{"color_adjust", &dispatch<&game_lua_kernel::intf_color_adjust>},
 		{"delay", &dispatch<&game_lua_kernel::intf_delay>},
 		{"deselect_hex", &dispatch<&game_lua_kernel::intf_deselect_hex>},
@@ -4646,7 +4804,7 @@ void game_lua_kernel::load_game(const config& level)
 
 	lua_newtable(L);
 	int k = 1;
-	for (const config::any_child &v : level.all_children_range())
+	for (const config::any_child v : level.all_children_range())
 	{
 		if (is_handled_file_tag(v.key)) continue;
 		lua_createtable(L, 2, 0);

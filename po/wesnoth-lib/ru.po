@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-20 20:27+0300\n"
+"POT-Creation-Date: 2021-06-23 11:42-0400\n"
 "PO-Revision-Date: 2019-09-21 22:33+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: \n"
@@ -57,10 +57,10 @@ msgstr "Оповещения мультиплеера"
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
 msgstr ""
 
-#. [terrain_type]: id=zfarmer-fence  # AI-animal-proof fences from first scenario
-#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
 #. [terrain_type]: id=fence_iron
+#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
+#. [terrain_type]: id=zfarmer-fence  # AI-animal-proof fences from first scenario
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:9
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:5
 #: data/core/terrain.cfg:489 data/core/terrain.cfg:499
@@ -1813,8 +1813,8 @@ msgid "Fake Map Border"
 msgstr "Фальшивая граница карты"
 
 #. [terrain_type]: id=shroud
-#. [toggle_button]: id=sort_7
 #. [toggle_button]: id=shroud
+#. [toggle_button]: id=sort_7
 #: data/core/terrain.cfg:2950 data/gui/window/editor_edit_side.cfg:179
 #: data/gui/window/game_stats.cfg:384 data/gui/window/mp_create_game.cfg:388
 msgid "Shroud"
@@ -2277,9 +2277,9 @@ msgid ""
 msgstr "Настройте параметры для выбранных пользовательских изменений."
 
 #. [button]: id=reset_option_values
+#. [button]: id=orb_defaults
 #. [button]: id=btn_reset_hotkeys
 #. [button]: id=revert_to_defaults
-#. [button]: id=orb_defaults
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/window/mp_alerts_options.cfg:227
 #: data/gui/window/preferences/02_hotkeys.cfg:279
@@ -2297,8 +2297,8 @@ msgstr "Выберите игрока"
 #. [toggle_button]: id=sort_0
 #. [label]
 #. [toggle_button]: id=sort_name
-#. [label]: id=name
 #. [toggle_button]: id=sort_1
+#. [label]: id=name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:216
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_connect.cfg:159
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -2327,8 +2327,8 @@ msgid "Downloads"
 msgstr "Загрузки"
 
 #. [toggle_button]: id=sort_4
-#. [toggle_button]: id=sort_1
 #. [toggle_button]: id=sort_0
+#. [toggle_button]: id=sort_1
 #: data/gui/widget/addon_list.cfg:151 data/gui/window/unit_create.cfg:147
 #: data/gui/window/unit_list.cfg:79 data/gui/window/unit_recall.cfg:33
 msgid "Type"
@@ -2367,8 +2367,8 @@ msgstr "Удалить аддон"
 msgid "Messages waiting"
 msgstr "Сообщения ожидаются"
 
-#. [button]: id=click_dismiss
 #. [button]: id=close_window
+#. [button]: id=click_dismiss
 #. [button]: id=cancel
 #. [button]: id=ok
 #: data/gui/widget/chatbox.cfg:51 data/gui/widget/window_borderless.cfg:83
@@ -2674,8 +2674,8 @@ msgstr "Выйти"
 msgid "Choose the add-ons you want to remove."
 msgstr "Выберите аддоны для удаления."
 
-#. [button]: id=remove
 #. [button]: id=ok
+#. [button]: id=remove
 #: data/gui/window/addon_uninstall_list.cfg:161
 #: data/gui/window/preferences/05_multiplayer.cfg:289
 msgid "Remove"
@@ -2835,9 +2835,9 @@ msgstr "Играть кампанию"
 msgid "game^Play"
 msgstr ""
 
-#. [label]: id=title
-#. [slider]: id=enemey_gold_factor
 #. [slider]: id=enemy_gold_factor
+#. [slider]: id=enemey_gold_factor
+#. [label]: id=title
 #: data/gui/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:263
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:309
@@ -2865,8 +2865,8 @@ msgstr "Страница:"
 msgid "Last"
 msgstr "В конец"
 
-#. [button]: id=previous_page
 #. [button]: id=previous_tip
+#. [button]: id=previous_page
 #: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
 msgid "Previous"
 msgstr "Назад"
@@ -2876,8 +2876,8 @@ msgstr "Назад"
 msgid "Previous page"
 msgstr "Прошлая страница"
 
-#. [button]: id=next_page
 #. [button]: id=next_tip
+#. [button]: id=next_page
 #: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
 msgid "Next"
 msgstr "Вперёд"
@@ -2903,31 +2903,31 @@ msgstr "Скопировать этот лог в буфер обмена"
 msgid "Load Core"
 msgstr "Загрузить ядро"
 
-#. [button]: id=copy_
 #. [button]: id=copy
+#. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:50 data/gui/window/game_cache_options.cfg:110
 #: data/gui/window/game_version.cfg:47
 #: data/gui/window/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
 msgstr "Копировать"
 
-#. [button]: id=copy_
 #. [button]: id=copy
+#. [button]: id=copy_
 #: data/gui/window/custom_tod.cfg:51 data/gui/window/game_cache_options.cfg:111
 #: data/gui/window/game_version.cfg:48
 #: data/gui/window/screenshot_notification.cfg:34
 msgid "Copy this path to clipboard"
 msgstr "Скопировать этот путь в буфер"
 
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:63
 msgid "filesystem^Browse"
 msgstr "Перейти"
 
-#. [button]: id=browse_
 #. [button]: id=browse
+#. [button]: id=browse_
 #: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:64
 msgid "Browse this location using a file manager"
@@ -3262,15 +3262,15 @@ msgstr "Создать"
 msgid "New Map"
 msgstr "Новая карта"
 
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
 msgstr "Ширина:"
 
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
@@ -3412,8 +3412,8 @@ msgid "Execution trace"
 msgstr "Трейс выполнения"
 
 #. [button]: id=cancel
-#. [button]: id=quit_without_surrender
 #. [grid]
+#. [button]: id=quit_without_surrender
 #: data/gui/window/formula_debugger.cfg:234
 #: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:258
 msgid "Quit"
@@ -3886,8 +3886,8 @@ msgstr "Нажмите желаемую горячую клавишу (Esc от�
 msgid "Show or Hide Labels"
 msgstr "Показать или скрыть метки"
 
-#. [label]
 #. [button]: id=language
+#. [label]
 #: data/gui/window/language_selection.cfg:41
 #: data/gui/window/title_screen.cfg:484
 msgid "Language"
@@ -3985,9 +3985,9 @@ msgid "Announcements"
 msgstr "Продвижения"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [grid]
 #. [label]: id=title
 #. [button]: id=show_preferences
-#. [grid]
 #: data/gui/window/lobby_main.cfg:458 data/gui/window/lobby_main.cfg:653
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:256
 #: src/hotkey/hotkey_command.cpp:118
@@ -4184,8 +4184,8 @@ msgstr ""
 "(если окно игры неактивно или свернуто) показывать уведомления на рабочем "
 "столе."
 
-#. [label]
 #. [widget]: id=label
+#. [label]
 #: data/gui/window/mp_alerts_options.cfg:147
 #: data/gui/window/preferences.cfg:347
 msgid "Sound"
@@ -4616,15 +4616,15 @@ msgstr "Лидер:"
 msgid "Gender:"
 msgstr "Пол:"
 
-#. [toggle_button]: id=male_toggle
 #. [row]
+#. [toggle_button]: id=male_toggle
 #: data/gui/window/mp_faction_select.cfg:178
 #: data/gui/window/unit_create.cfg:225
 msgid "Male"
 msgstr "Мужчина"
 
-#. [toggle_button]: id=female_toggle
 #. [row]
+#. [toggle_button]: id=female_toggle
 #: data/gui/window/mp_faction_select.cfg:180
 #: data/gui/window/unit_create.cfg:236
 msgid "Female"
@@ -4645,8 +4645,8 @@ msgstr "Выберите вашу фракцию"
 msgid "Starting position:"
 msgstr "Начальная позиция:"
 
-#. [label]
 #. [widget]: id=name
+#. [label]
 #: data/gui/window/mp_host_game_prompt.cfg:40
 #: data/gui/window/mp_method_selection.cfg:273
 msgid "Host Networked Game"
@@ -4724,8 +4724,8 @@ msgstr "Сохранять пароль в настройках (в зашифр
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#. [widget]: id=label
 #. [grid]
+#. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
 #: src/gui/dialogs/game_load.cpp:406
@@ -6381,7 +6381,7 @@ msgstr "Нет"
 
 #: src/gui/dialogs/chat_log.cpp:403 src/gui/dialogs/game_cache_options.cpp:67
 #: src/gui/dialogs/game_version_dialog.cpp:153
-#: src/gui/dialogs/gamestate_inspector.cpp:402
+#: src/gui/dialogs/gamestate_inspector.cpp:407
 #: src/gui/dialogs/lua_interpreter.cpp:478
 #: src/gui/dialogs/screenshot_notification.cpp:68
 #: src/gui/dialogs/wml_error.cpp:192

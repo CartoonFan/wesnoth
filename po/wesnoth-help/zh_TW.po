@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # 楊綮銘 <steven2880@gmail.com>, 2008.
 # 曾筠鈞 <yunchuntseng@gmail.com>, 2018.
+# 李信融 <magiclen0810@gmail.com>, 2021.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.15\n"
+"Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-20 14:49+0300\n"
-"PO-Revision-Date: 2021-04-09 09:00+0800\n"
+"POT-Creation-Date: 2021-06-23 11:42-0400\n"
+"PO-Revision-Date: 2021-06-25 19:50+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.4.3\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. [time]: id=underground
@@ -62,10 +63,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
-#, fuzzy
-#| msgid "This unit is capable of basic healing."
 msgid "This unit is capable of basic healing and slowing dehydration."
-msgstr "這個單位有基本治療的能力。"
+msgstr "這個單位有基本治療以及減緩脫水的能力。"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
@@ -127,14 +126,10 @@ msgstr ""
 
 #. [heals]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
-#, fuzzy
-#| msgid ""
-#| "This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
-msgstr "這個單位有治療那些在他附近的單位的能力，也能治癒他們的毒。"
+msgstr "這個單位有治療那些在他附近的單位的能力，也能減緩脫水、治癒他們的毒。"
 
 #. [trait]: id=healthy
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:11
@@ -815,40 +810,6 @@ msgstr "地圖/章節編輯器"
 # 最後面的警告不照翻。
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:224
-#, fuzzy
-#| msgid ""
-#| "Wesnoth’s Map and Scenario Editor allows users to create and edit the "
-#| "maps on which every Wesnoth scenario takes place. It also provides a "
-#| "limited set of features for setting up a basic scenario.\n"
-#| "\n"
-#| "The editor can be launched from the <italic>text='Map Editor'</italic> "
-#| "option at the title screen.\n"
-#| "\n"
-#| "<header>text='Editing Modes'</header>\n"
-#| "\n"
-#| "The editor features two modes of operation: terrain mode and scenario "
-#| "mode.\n"
-#| "\n"
-#| "The <ref>dst='..editor_mode_terrain' text='Terrain Mode'</ref> is similar "
-#| "to a simple paint application, with tools to <ref>dst='editor_tool_paint' "
-#| "text='paint'</ref>, <ref>dst='editor_tool_fill' text='fill'</ref>, "
-#| "<ref>dst='editor_tool_select' text='select (and copy)'</ref>, and "
-#| "<ref>dst='editor_tool_paste' text='paste'</ref>. It also has the tool for "
-#| "setting the leaders’ <ref>dst='editor_tool_starting' text='starting "
-#| "locations'</ref>.\n"
-#| "\n"
-#| "The <ref>dst='..editor_mode_scenario' text='Scenario Mode'</ref>, in "
-#| "addition to the tools available in terrain mode, adds support for adding "
-#| "<ref>dst='editor_tool_label' text='labels'</ref>, "
-#| "<ref>dst='editor_tool_scenery' text='scenery items'</ref>, "
-#| "<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
-#| "and assigning <ref>dst='editor_tool_village' text='village ownership'</"
-#| "ref> at the start of the scenario. There’s also a "
-#| "<ref>dst='editor_playlist' text='playlist manager'</ref> for the music.\n"
-#| "\n"
-#| "<bold>text='Warning: the Scenario Mode is buggy in 1.14.'</bold> "
-#| "Improving it is one of the main blockers for the 1.16 release, however in "
-#| "1.14 its quality is far below that of the game and the terrain mode."
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -899,10 +860,7 @@ msgstr ""
 "<ref>dst='editor_tool_scenery' text='章節項目'</ref>、"
 "<ref>dst='editor_tool_unit' text='單位'</ref>，此外能指派章節開始時的"
 "<ref>dst='editor_tool_village' text='村莊擁有權'</ref>。另外還有"
-"<ref>dst='editor_playlist' text='播放清單管理器'</ref>可以處理音樂。\n"
-"\n"
-"<bold>text='警告：章節模式在1.14版本有很多臭蟲'</bold>，修正它是1.16版本的主"
-"要目標之一。"
+"<ref>dst='editor_playlist' text='播放清單管理器'</ref>可以處理音樂。"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:236
@@ -1384,14 +1342,14 @@ msgstr ""
 "有沒有被分檔案撰寫並不重要。引擎需要「[scenario]...[/scenario]」（或是"
 "「[multiplayer]...[/multiplayer]」）標籤來了解WML是屬於哪個章節。"
 
-#. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
+#. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:127
 msgid "Deep Underground"
 msgstr "深層地下"
 
-#. [editor_times]: id=indoors
 #. [time]: id=indoors
+#. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:104
 msgid "Indoors"
 msgstr "室內"
@@ -3475,42 +3433,42 @@ msgstr ""
 "午是白天，夜晚和凌晨是夜間：\n"
 "\n"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:476 data/core/macros/schedules.cfg:16
 #: data/core/macros/schedules.cfg:290
 msgid "Dawn"
 msgstr "黎明"
 
-#. [time]: id=morning
 #. [topic]: id=time_of_day
+#. [time]: id=morning
 #: data/core/help.cfg:477 data/core/macros/schedules.cfg:28
 msgid "Morning"
 msgstr "上午"
 
-#. [time]: id=afternoon
 #. [topic]: id=time_of_day
+#. [time]: id=afternoon
 #: data/core/help.cfg:478 data/core/macros/schedules.cfg:46
 msgid "Afternoon"
 msgstr "下午"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:479 data/core/macros/schedules.cfg:55
 #: data/core/macros/schedules.cfg:411
 msgid "Dusk"
 msgstr "黄昏"
 
-#. [time]: id=first_watch
 #. [topic]: id=time_of_day
+#. [time]: id=first_watch
 #: data/core/help.cfg:480 data/core/macros/schedules.cfg:67
 msgid "First Watch"
 msgstr "夜晚"
 
-#. [time]: id=second_watch
 #. [topic]: id=time_of_day
+#. [time]: id=second_watch
 #: data/core/help.cfg:481 data/core/macros/schedules.cfg:91
 msgid "Second Watch"
 msgstr "凌晨"
@@ -4310,9 +4268,9 @@ msgstr ""
 "要移除模組，在模組伺服器連線對話框中選擇<bold>text='移除模組'</bold>。你將會"
 "看到一些選項來移除任意數量的你目前已經安裝的模組。\n"
 "\n"
-"有發佈資訊(<italic>text='.pbl'</italic>)的模組無法被移除，為了避免創作者們不"
-"小心移除它們。如果有必要，你必須使用你的平台所提供的檔案瀏覽器來手動刪除訊息"
-"檔案或是模組本身。"
+"有發佈資訊（<italic>text='.pbl'</italic>）的模組無法被移除，為了避免創作者們"
+"不小心移除它們。如果有必要，你必須使用你的平台所提供的檔案瀏覽器來手動刪除訊"
+"息檔案或是模組本身。"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:678
@@ -4395,11 +4353,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:694
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Toggle the display of the current frames per second.\n"
-#| "\n"
 msgid ""
 "\n"
 "Toggle the display of the current frames per second. Also writes these "
@@ -4407,7 +4360,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"切換顯示目前的每秒影格數。\n"
+"切換顯示目前的每秒影格數。同時將這些數值寫進存放在使用者資料目錄內的一個檔案"
+"中。\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -5101,25 +5055,21 @@ msgstr "當被用於進攻時，這種攻擊總是至少有60%的命中率。"
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:489
 msgid "deflect"
-msgstr ""
+msgstr "偏轉"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:490
-#, fuzzy
-#| msgid ""
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used defensively, this attack reduces the opponent's chance to hit by "
 "10%."
-msgstr "當被用於進攻時，這種攻擊總是至少有60%的命中率。"
+msgstr "當被用於防守時，這種攻擊總是至少有60%的命中率。"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/abilities.cfg:491
 msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
-msgstr ""
+msgstr "這個單位的防禦技巧會減少敵人攻擊的成功率。"
 
 #. [chance_to_hit]: id=magical
 #: data/core/macros/abilities.cfg:505
@@ -5157,20 +5107,20 @@ msgstr ""
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:542
 msgid "absorb"
-msgstr ""
+msgstr "減輕"
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:543
 msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
-msgstr ""
+msgstr "這個攻擊會讓單位處於良好的防守位置，它能夠減輕一些敵人攻擊造成的傷害。"
 
 #. [damage]: id=absorb
 #: data/core/macros/abilities.cfg:544
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
-msgstr ""
+msgstr "這個單位可以阻擋敵人的攻擊，使其擊中時造成的較少的傷害。"
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:556
@@ -5394,55 +5344,51 @@ msgstr "長夜(3)"
 msgid "The Long Dark (4)"
 msgstr "長夜(4)"
 
-#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:564
-msgid "Special Notes:"
-msgstr "特別備註："
-
-#: data/core/macros/special-notes.cfg:17
+#: data/core/macros/special-notes.cfg:12
 msgid ""
 "Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr "靈體對傷害有極不尋常的抗性，且在開闊水域移動得很慢。"
 
-#: data/core/macros/special-notes.cfg:20
+#: data/core/macros/special-notes.cfg:15
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
 "這個單位的秘法攻擊對魔法生物能造成重大傷害，甚至對某些普通生物也是如此。"
 
-#: data/core/macros/special-notes.cfg:27
+#: data/core/macros/special-notes.cfg:22
 msgid "This unit is capable of basic healing."
 msgstr "這個單位有基本治療的能力。"
 
-#: data/core/macros/special-notes.cfg:30
+#: data/core/macros/special-notes.cfg:25
 msgid "This unit is capable of rapid healing."
 msgstr "這個單位有快速治療的能力。"
 
-#: data/core/macros/special-notes.cfg:33
+#: data/core/macros/special-notes.cfg:28
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr "這個單位有治療那些在他附近的單位的能力，也能治癒他們的毒。"
 
-#: data/core/macros/special-notes.cfg:36
+#: data/core/macros/special-notes.cfg:31
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr "這個單位有抵消他身邊的單位體內的毒素影響的能力。"
 
-#: data/core/macros/special-notes.cfg:39
+#: data/core/macros/special-notes.cfg:34
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
 msgstr "這個單位可以恢復，這使他能總是像在村莊中駐守一樣復原身體。"
 
-#: data/core/macros/special-notes.cfg:42
+#: data/core/macros/special-notes.cfg:37
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
 msgstr "這個單位的穩固性能減少一些攻擊的傷害，但只有在防守時有效。"
 
-#: data/core/macros/special-notes.cfg:45
+#: data/core/macros/special-notes.cfg:40
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
@@ -5450,24 +5396,24 @@ msgstr ""
 "這個單位的領導技能能使鄰接的同陣營單位在戰鬥中造成更多傷害，不過這只適用於更"
 "低等級的單位。"
 
-#: data/core/macros/special-notes.cfg:48
+#: data/core/macros/special-notes.cfg:43
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
 "這個單位的游擊技能讓他能忽略敵人的控制區域，因此能不受阻礙地在他們旁邊移動。"
 
-#: data/core/macros/special-notes.cfg:51
+#: data/core/macros/special-notes.cfg:46
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr "照明增加鄰近區域的光照等級。"
 
-#: data/core/macros/special-notes.cfg:54
+#: data/core/macros/special-notes.cfg:49
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr "這個單位可以使用一個移動點數在任意兩個空的同陣營村莊之間傳送。"
 
-#: data/core/macros/special-notes.cfg:57
+#: data/core/macros/special-notes.cfg:52
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
@@ -5475,11 +5421,11 @@ msgstr ""
 "在林地中，這個單位的埋伏技能能使敵人看不到他，除非敵人就緊接在旁或因發動攻撃"
 "而暴露他自己。"
 
-#: data/core/macros/special-notes.cfg:60
+#: data/core/macros/special-notes.cfg:55
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr "這個單位能夠在夜間隱身，不留下他的存在痕跡。"
 
-#: data/core/macros/special-notes.cfg:63
+#: data/core/macros/special-notes.cfg:58
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
@@ -5487,18 +5433,18 @@ msgstr ""
 "這個單位可以隱藏在村莊中（水中村莊除外），而仍不被他的敵人察覺，除了那些站在"
 "這個單位的旁邊的敵人。"
 
-#: data/core/macros/special-notes.cfg:66
+#: data/core/macros/special-notes.cfg:61
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr "這個單位可以在深水中不被看見地移動，不需要來自水面上的空氣。"
 
-#: data/core/macros/special-notes.cfg:69
+#: data/core/macros/special-notes.cfg:64
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr "這個單位每次殺死一個活著的單位，就會增加1點生命值上限。"
 
-#: data/core/macros/special-notes.cfg:72
+#: data/core/macros/special-notes.cfg:67
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
@@ -5506,7 +5452,7 @@ msgstr ""
 "無論何時，只要狂暴攻撃被使用了，這個單位就會持續發動進攻，直到他或者他的敵人"
 "死亡為止。"
 
-#: data/core/macros/special-notes.cfg:75
+#: data/core/macros/special-notes.cfg:70
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -5515,14 +5461,14 @@ msgstr ""
 "如果在攻擊目標時，目標的對面有也有目標的敵人，這個單位會進行背刺，藉由悄悄繞"
 "到那名目標的背後來使他遭受雙倍傷害。"
 
-#: data/core/macros/special-notes.cfg:78
+#: data/core/macros/special-notes.cfg:73
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
 "被瘟疫奪走性命的敵人將會重新以非生的形式再次站起來，除非他們站在村莊上。"
 
-#: data/core/macros/special-notes.cfg:81
+#: data/core/macros/special-notes.cfg:76
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
@@ -5530,48 +5476,48 @@ msgstr ""
 "這個單位能夠緩速他的敵人，使他們的移動速度和攻擊傷害減半，直到他們結束一個回"
 "合。"
 
-#: data/core/macros/special-notes.cfg:84
+#: data/core/macros/special-notes.cfg:79
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr "把敵人化為石頭的能力使這個單位變得極度危險。"
 
-#: data/core/macros/special-notes.cfg:87
+#: data/core/macros/special-notes.cfg:82
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
 msgstr "這個單位的精準給他高度命中目標敵人的機率，但只在進攻時有效。"
 
-#: data/core/macros/special-notes.cfg:90
+#: data/core/macros/special-notes.cfg:85
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr "這個單位有魔法攻擊，魔法攻擊總是有高度命中對手的機率。"
 
-#: data/core/macros/special-notes.cfg:93
+#: data/core/macros/special-notes.cfg:88
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr "每當這個單位身體部位受傷，牠的連續攻撃就會變得更不致命。"
 
-#: data/core/macros/special-notes.cfg:96
+#: data/core/macros/special-notes.cfg:91
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr "使用衝鋒攻擊會使造成的傷害和受到的傷害加倍，但這不會影響防禦性的反擊。"
 
-#: data/core/macros/special-notes.cfg:99
+#: data/core/macros/special-notes.cfg:94
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr "戰鬥時，這個單位可以從受害者那吸取生命，來恢復他自己的健康。"
 
-#: data/core/macros/special-notes.cfg:102
+#: data/core/macros/special-notes.cfg:97
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
 msgstr ""
 "這個單位的武器的長度，讓他可以在近戰中優先發動攻擊，甚至在防守時也可以。"
 
-#: data/core/macros/special-notes.cfg:105
+#: data/core/macros/special-notes.cfg:100
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
@@ -5579,7 +5525,7 @@ msgstr ""
 "這個單位的毒素攻撃的受害者將持續受到傷害，直到他們能到村莊或者被會治癒的單位"
 "治好為止。"
 
-#: data/core/macros/special-notes.cfg:108
+#: data/core/macros/special-notes.cfg:103
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
@@ -6233,7 +6179,7 @@ msgstr ""
 "<header>text='社會結構'</header>\n"
 "龍族是相對好戰的種族，其社會是最能被描述為有文化的軍事社會。龍族部落的核心是"
 "一小群久經沙場的勇士，他們以一個互相尊重──或僅是畏懼──的支配者為首，這些核心"
-"龍族以鐵腕來統制這個社會。每個龍族都期望能在嚴格的階級制度中爭取他們的地位，"
+"龍族以鐵腕來統治這個社會。每個龍族都期望能在嚴格的階級制度中爭取他們的地位，"
 "服從上級，以及指揮下屬。進入管理階層的唯一可能的途徑是挑戰上級，並在一次的交"
 "戰中擊敗他，這也是管理階層內部階級的建立方式。對龍族同胞使用任何形式的欺騙都"
 "毫無例外地被視為懦弱及不可接受的。\n"
@@ -6590,24 +6536,18 @@ msgstr ""
 
 #. [race]: id=horse
 #: data/core/units.cfg:183
-#, fuzzy
-#| msgid "race^Wose"
 msgid "race^Horse"
-msgstr "樹人"
+msgstr "馬"
 
 #. [race]: id=horse
 #: data/core/units.cfg:184
-#, fuzzy
-#| msgid "race+female^Ogre"
 msgid "race+female^Horse"
-msgstr "食人魔"
+msgstr "馬"
 
 #. [race]: id=horse
 #: data/core/units.cfg:185
-#, fuzzy
-#| msgid "race^Woses"
 msgid "race^Horses"
-msgstr "樹人"
+msgstr "馬"
 
 #. [race]: id=horse
 #: data/core/units.cfg:186
@@ -6622,6 +6562,13 @@ msgid ""
 "Winged horses, man-horse hybrids, and ghost horses have made their way into "
 "written history, though few can honestly claim to have seen such things."
 msgstr ""
+"馴養的馬有多種模樣和大小，從強大的戰爭衝鋒戰馬，到健壯的役馬或是敏捷的牧馬。"
+"雖然牠們比許多野獸要脆弱得多，但牠們的速度和靈活度允許野生的馬群在野外茁壯成"
+"長。\n"
+"\n"
+"馬在許多文明中一直扮演著重要的一環，所以有很多圍繞著牠們的迷思和故事也不足為"
+"奇。飛馬、人馬、幽靈馬已經被人們接受而寫入歷史，雖然只有少數人可以誠實地聲稱"
+"他們有看過這樣的生物。"
 
 #. [race]: id=human
 #: data/core/units.cfg:203
@@ -6699,7 +6646,7 @@ msgstr ""
 "\n"
 "<header>text='氏族'</header>\n"
 "韋諾東部的省份被稱為氏族的家鄉，比西部更文明的省分還擁有更多的遼闊平原以及連"
-"綿起伏的丘陵的地形組成。它們是馬上氏族的家園，與韋諾王室結盟，但獨立運作且保"
+"綿起伏的丘陵的地形組成。它們是馬背氏族的家園，與韋諾王室結盟，但獨立運作且保"
 "有他們自己的特徵。有些人認爲他們是會對王室進貢食物和士兵以換取保護的一個附庸"
 "國。而有些人說他們與韋諾西半部的人有相等地位。再說，這些東部的省份的確沒有像"
 "西部韋諾那樣的一支徵召軍隊。備戰是氏族生活的一部分，父母從小就教小孩騎馬、戰"
@@ -7608,6 +7555,10 @@ msgstr "立場："
 #: src/help/help_topic_generators.cpp:558
 msgid "Required XP:"
 msgstr "升級所需經驗值："
+
+#: src/help/help_topic_generators.cpp:564
+msgid "Special Notes:"
+msgstr "特別備註："
 
 #: src/help/help_topic_generators.cpp:573
 msgid "unit help^Attacks"

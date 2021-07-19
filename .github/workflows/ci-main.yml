@@ -322,10 +322,13 @@ jobs:
           D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
 
       - name: Setup cmake
-        uses: jwlawson/actions-setup-cmake@v1.8
+        uses: jwlawson/actions-setup-cmake@v1.9
+        with:
+          cmake-version: '3.20'
 
       - name: Use cmake
         run: |
+          cmake --version
           cmake -DCMAKE_BUILD_TYPE=Debug -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_MYSQL=false -DENABLE_NLS=false -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_TOOLCHAIN_FILE=D:/a/wesnoth/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 16 2019" .
 
 # delete buildtrees directory to free up space after cmake invokes vcpkg to build the dependencies
@@ -374,7 +377,9 @@ jobs:
           D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
 
       - name: Setup cmake
-        uses: jwlawson/actions-setup-cmake@v1.8
+        uses: jwlawson/actions-setup-cmake@v1.9
+        with:
+          cmake-version: '3.20'
 
       - name: Use cmake
         run: |

@@ -10,16 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-20 11:49 UTC\n"
-"PO-Revision-Date: 2021-06-04 21:56+0200\n"
-"Last-Translator: Septim <septim@centrum.cz>\n"
+"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
+"PO-Revision-Date: 2021-07-07 19:47+0200\n"
+"Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.0\n"
 
 #. [attack]: type=impact
 #. [attack]: type=arcane
@@ -63,9 +62,6 @@ msgstr "inkoust"
 #: data/campaigns/Dead_Water/units/Young_King.cfg:26
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:41
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:42
-#: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Guardians.cfg:14
-#: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Guardians.cfg:34
-#: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Guardians.cfg:53
 #: data/core/units/dunefolk/Alchemist.cfg:35
 #: data/core/units/dunefolk/Apothecary.cfg:36
 #: data/core/units/dunefolk/Cataphract.cfg:43
@@ -76,8 +72,8 @@ msgstr "inkoust"
 #: data/core/units/dunefolk/Sunderer.cfg:32
 #: data/core/units/dunefolk/Windbolt.cfg:32
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
-#: data/core/units/nagas/Guard.cfg:28 data/core/units/nagas/Guard_High.cfg:29
-#: data/core/units/nagas/Guard_Shield.cfg:28
+#: data/core/units/nagas/Guard.cfg:27 data/core/units/nagas/Guard_High.cfg:29
+#: data/core/units/nagas/Guard_Shield.cfg:27
 msgid "mace"
 msgstr "palcát"
 
@@ -347,7 +343,6 @@ msgid "saber"
 msgstr "šavle"
 
 #. [unit_type]: id=Walking Corpse, race=undead
-#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #. [unit_type]: id=SotA Walking Corpse_Human
 #. [unit_type]: id=SotA Walking Corpse_Dwarf
 #. [unit_type]: id=SotA Walking Corpse_Goblin
@@ -359,6 +354,7 @@ msgstr "šavle"
 #. [unit_type]: id=SotA Walking Corpse_Wolf Rider
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Walking Corpse_Rat
+#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:4
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:110
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:125
@@ -409,8 +405,8 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Troll
 #. [unit_type]: id=SotA Soulless_Wose
 #. [unit_type]: id=SotA Soulless_Wolf Rider
-#. [attack]: type=fire
 #. [attack]: type=cold
+#. [attack]: type=fire
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:35
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:32
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:113
@@ -525,8 +521,8 @@ msgid "fangs"
 msgstr "tesáky"
 
 #. [attack]: type=blade
-#. [attack]: type=pierce
 #. [attack]: type=cold
+#. [attack]: type=pierce
 #. [variation]
 #. [unit_type]: id=SotA Walking Corpse_Rat
 #. [unit_type]: id=SotA Soulless_Rat
@@ -1121,8 +1117,8 @@ msgstr ""
 "Oproti ostatním drakonidům mají drakonidé soudci vyšší odolnost vůči útokům "
 "„bodnutím“."
 
-#. [attack]: type=pierce
 #. [attack]: type=blade
+#. [attack]: type=pierce
 #: data/core/units/drakes/Arbiter.cfg:30 data/core/units/drakes/Arbiter.cfg:39
 #: data/core/units/drakes/Warden.cfg:31 data/core/units/drakes/Warden.cfg:40
 #: data/core/units/humans/Loyalist_Halberdier.cfg:31
@@ -5730,11 +5726,6 @@ msgstr "Sele"
 
 #. [unit_type]: id=Piglet, race=monster
 #: data/core/units/monsters/Boar_Piglet.cfg:34
-#, fuzzy
-#| msgid ""
-#| "Young piglets are curious but just as ill-tempered as their parents, if a "
-#| "little less of a challenge in combat.  But seldom is a piglet found that "
-#| "does not have a protective adult boar watching over them."
 msgid ""
 "Young piglets are curious but just as ill-tempered as their parents, if a "
 "little less of a challenge in combat. But seldom is a piglet found that does "
@@ -5924,10 +5915,10 @@ msgid ""
 "their bidding. When not being controlled they like to frolic in pools of "
 "lava and take great delight in burning anything they can reach."
 msgstr ""
-"Plamenní strážci jsou duchové kouře a ohně. Nikdo si není zcela jistý, odkud "
-"pocházejí, ale občas je vyvolají mocní mágové. Pokud nemají žádné rozkazy, "
-"rádi skotačí v jezírcích lávy a s velkým potěšením spalují vše v jejich "
-"dosahu."
+"Plamenní strážci jsou duchové kouře a ohně. Nikdo si není zcela jistý, odkud "
+"pocházejí, ale občas je vyvolají mocní mágové, aby plnili jejich příkazy. "
+"Když je nikdo neovládá, rádi skotačí v jezírkách lávy a s velkým potěšením "
+"spalují vše v jejich dosahu."
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Fire_Guardian.cfg:28
@@ -5937,30 +5928,22 @@ msgstr "ohnivé drápy"
 
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:8
-#, fuzzy
-#| msgid "fire breath"
 msgid "Fire Wraith"
-msgstr "ohnivý dech"
+msgstr "Ohnivý přízrak"
 
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:47
-#, fuzzy
-#| msgid ""
-#| "Fire Guardians are spirits of smoke and flame. No one is exactly sure "
-#| "where they come from, but they are occasionally summoned by powerful "
-#| "mages to do their bidding. When not being controlled they like to frolic "
-#| "in pools of lava and take great delight in burning anything they can "
-#| "reach."
 msgid ""
 "Fire Wraiths are spirits of smoke and flame. No one is exactly sure where "
 "they come from, but they are occasionally summoned by powerful mages to do "
 "their bidding. The odd armor they wear hints at a former life or creator, "
 "but whatever ancient civilization was involved has been lost to history."
 msgstr ""
-"Plamenní strážci jsou duchové kouře a ohně. Nikdo si není zcela jistý, odkud "
-"pocházejí, ale občas je vyvolají mocní mágové. Pokud nemají žádné rozkazy, "
-"rádi skotačí v jezírcích lávy a s velkým potěšením spalují vše v jejich "
-"dosahu."
+"Ohnivé přízraky jsou duchové kouře a ohně. Nikdo si není zcela jistý, odkud "
+"pocházejí, ale občas je vyvolají mocní mágové, aby plnily jejich příkazy. "
+"Podivná zbroj, kterou nosí, napovídá o jejich dřívějším životě nebo tvůrci, "
+"ale jaká starověká civilizace v tom měla prsty, to zmizelo v propadlišti "
+"dějin."
 
 # Pořád má v popisu, že je obří.
 #. [unit_type]: id=Frost Stoat, race=monster
@@ -6170,7 +6153,7 @@ msgstr "Hnědohřívák"
 #: data/core/units/monsters/Horse.cfg:19
 msgid ""
 "Bay horses are defined more by their coloration than their size or "
-"temperment, and can be found anywhere from the battlefield to the farm to "
+"temperament, and can be found anywhere from the battlefield to the farm to "
 "the wild plains and woodlands. Though an unencumbered horse will tend to "
 "flee if possible, they will fight back with a powerful kick when cornered."
 msgstr ""
@@ -6193,11 +6176,6 @@ msgstr "Bělohřívák"
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:85
 #, fuzzy
-#| msgid ""
-#| "Some horses have a white color, and they are merely white horses.  But "
-#| "there exist a special breed, found only in the wild woods, that are White "
-#| "Horses.  As if blessed by the faerie world, they have a grace and agility "
-#| "not found in their more common relatives."
 msgid ""
 "Some horses have a white color, and they are merely white horses. But there "
 "exist a special breed, found only in the wild woods, that are White Horses. "
@@ -6216,11 +6194,6 @@ msgstr "Šedohřívák"
 
 #. [unit_type]: id=Dark Horse
 #: data/core/units/monsters/Horse.cfg:166
-#, fuzzy
-#| msgid ""
-#| "Dark Horses are wild animals, but they seem to take an odd interest in "
-#| "the civilized races.  They leave no signs of their passage, but they have "
-#| "been noticed scouting camps and outposts during the night."
 msgid ""
 "Dark Horses are wild animals, but they seem to take an odd interest in the "
 "civilized races. They leave no signs of their passage, but they have been "
@@ -6640,9 +6613,9 @@ msgstr ""
 msgid "Wolf"
 msgstr "Vlk"
 
+#. [unit_type]: id=Great Wolf, race=wolf
 #. [unit_type]: id=Wolf, race=wolf
 #. [unit_type]: id=Direwolf, race=wolf
-#. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:34
 #: data/core/units/monsters/Wolf_Dire.cfg:19
 #: data/core/units/monsters/Wolf_Great.cfg:19
@@ -6777,7 +6750,7 @@ msgstr "Nága bojovník"
 #: data/core/units/nagas/Guard_High.cfg:23
 msgid ""
 "The elite naga guards are a rigid barrier to any invaders of a naga "
-"stronghold. They have powerful stikes and, like the lesser Shield Guard, "
+"stronghold. They have powerful strikes and, like the lesser Shield Guard, "
 "they are difficult to dislodge from their posts because of effective use of "
 "a shield in melee techniques. This tactic does nothing against ranged "
 "attacks, but the nagas can usually seek better terrain advantage in such "
@@ -6786,7 +6759,7 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/nagas/Guard_High.cfg:37
-#: data/core/units/nagas/Guard_Shield.cfg:36
+#: data/core/units/nagas/Guard_Shield.cfg:35
 #, fuzzy
 #| msgid "shield bash"
 msgid "shield"

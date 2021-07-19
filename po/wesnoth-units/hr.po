@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.0-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-20 11:49 UTC\n"
+"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
 "PO-Revision-Date: 2008-03-06 10:56+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -55,9 +55,6 @@ msgstr ""
 #: data/campaigns/Dead_Water/units/Young_King.cfg:26
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:41
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:42
-#: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Guardians.cfg:14
-#: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Guardians.cfg:34
-#: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Guardians.cfg:53
 #: data/core/units/dunefolk/Alchemist.cfg:35
 #: data/core/units/dunefolk/Apothecary.cfg:36
 #: data/core/units/dunefolk/Cataphract.cfg:43
@@ -68,8 +65,8 @@ msgstr ""
 #: data/core/units/dunefolk/Sunderer.cfg:32
 #: data/core/units/dunefolk/Windbolt.cfg:32
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
-#: data/core/units/nagas/Guard.cfg:28 data/core/units/nagas/Guard_High.cfg:29
-#: data/core/units/nagas/Guard_Shield.cfg:28
+#: data/core/units/nagas/Guard.cfg:27 data/core/units/nagas/Guard_High.cfg:29
+#: data/core/units/nagas/Guard_Shield.cfg:27
 msgid "mace"
 msgstr ""
 
@@ -338,7 +335,6 @@ msgid "saber"
 msgstr ""
 
 #. [unit_type]: id=Walking Corpse, race=undead
-#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #. [unit_type]: id=SotA Walking Corpse_Human
 #. [unit_type]: id=SotA Walking Corpse_Dwarf
 #. [unit_type]: id=SotA Walking Corpse_Goblin
@@ -350,6 +346,7 @@ msgstr ""
 #. [unit_type]: id=SotA Walking Corpse_Wolf Rider
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Walking Corpse_Rat
+#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:4
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:110
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:125
@@ -397,8 +394,8 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Troll
 #. [unit_type]: id=SotA Soulless_Wose
 #. [unit_type]: id=SotA Soulless_Wolf Rider
-#. [attack]: type=fire
 #. [attack]: type=cold
+#. [attack]: type=fire
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:35
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:32
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:113
@@ -513,8 +510,8 @@ msgid "fangs"
 msgstr ""
 
 #. [attack]: type=blade
-#. [attack]: type=pierce
 #. [attack]: type=cold
+#. [attack]: type=pierce
 #. [variation]
 #. [unit_type]: id=SotA Walking Corpse_Rat
 #. [unit_type]: id=SotA Soulless_Rat
@@ -1025,8 +1022,8 @@ msgid ""
 "‘pierce’ attacks."
 msgstr ""
 
-#. [attack]: type=pierce
 #. [attack]: type=blade
+#. [attack]: type=pierce
 #: data/core/units/drakes/Arbiter.cfg:30 data/core/units/drakes/Arbiter.cfg:39
 #: data/core/units/drakes/Warden.cfg:31 data/core/units/drakes/Warden.cfg:40
 #: data/core/units/humans/Loyalist_Halberdier.cfg:31
@@ -4686,7 +4683,7 @@ msgstr ""
 #: data/core/units/monsters/Horse.cfg:19
 msgid ""
 "Bay horses are defined more by their coloration than their size or "
-"temperment, and can be found anywhere from the battlefield to the farm to "
+"temperament, and can be found anywhere from the battlefield to the farm to "
 "the wild plains and woodlands. Though an unencumbered horse will tend to "
 "flee if possible, they will fight back with a powerful kick when cornered."
 msgstr ""
@@ -5023,9 +5020,9 @@ msgstr ""
 msgid "Wolf"
 msgstr ""
 
+#. [unit_type]: id=Great Wolf, race=wolf
 #. [unit_type]: id=Wolf, race=wolf
 #. [unit_type]: id=Direwolf, race=wolf
-#. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:34
 #: data/core/units/monsters/Wolf_Dire.cfg:19
 #: data/core/units/monsters/Wolf_Great.cfg:19
@@ -5133,7 +5130,7 @@ msgstr ""
 #: data/core/units/nagas/Guard_High.cfg:23
 msgid ""
 "The elite naga guards are a rigid barrier to any invaders of a naga "
-"stronghold. They have powerful stikes and, like the lesser Shield Guard, "
+"stronghold. They have powerful strikes and, like the lesser Shield Guard, "
 "they are difficult to dislodge from their posts because of effective use of "
 "a shield in melee techniques. This tactic does nothing against ranged "
 "attacks, but the nagas can usually seek better terrain advantage in such "
@@ -5142,7 +5139,7 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/nagas/Guard_High.cfg:37
-#: data/core/units/nagas/Guard_Shield.cfg:36
+#: data/core/units/nagas/Guard_Shield.cfg:35
 msgid "shield"
 msgstr ""
 

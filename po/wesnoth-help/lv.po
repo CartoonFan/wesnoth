@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-20 14:49+0300\n"
+"POT-Creation-Date: 2021-06-23 11:42-0400\n"
 "PO-Revision-Date: 2015-08-08 15:21+0300\n"
 "Last-Translator: Gvido Bruveris <huhims@gmail.com>\n"
 "Language-Team: none\n"
@@ -1072,14 +1072,14 @@ msgid ""
 "to know which WML is part of each scenario."
 msgstr ""
 
-#. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
+#. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:127
 msgid "Deep Underground"
 msgstr "Dziļi pazemē"
 
-#. [editor_times]: id=indoors
 #. [time]: id=indoors
+#. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:104
 msgid "Indoors"
 msgstr "Iekštelpās"
@@ -3319,42 +3319,42 @@ msgstr ""
 "rīts un pēcpusdiena skaitās kā diena, bet pirmā un otrā sardze skaitās kā "
 "nakts:\n"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:476 data/core/macros/schedules.cfg:16
 #: data/core/macros/schedules.cfg:290
 msgid "Dawn"
 msgstr "Saullēkts"
 
-#. [time]: id=morning
 #. [topic]: id=time_of_day
+#. [time]: id=morning
 #: data/core/help.cfg:477 data/core/macros/schedules.cfg:28
 msgid "Morning"
 msgstr "Rīts"
 
-#. [time]: id=afternoon
 #. [topic]: id=time_of_day
+#. [time]: id=afternoon
 #: data/core/help.cfg:478 data/core/macros/schedules.cfg:46
 msgid "Afternoon"
 msgstr "Pēcpusdiena"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:479 data/core/macros/schedules.cfg:55
 #: data/core/macros/schedules.cfg:411
 msgid "Dusk"
 msgstr "Saulriets"
 
-#. [time]: id=first_watch
 #. [topic]: id=time_of_day
+#. [time]: id=first_watch
 #: data/core/help.cfg:480 data/core/macros/schedules.cfg:67
 msgid "First Watch"
 msgstr "Pirmā sardze"
 
-#. [time]: id=second_watch
 #. [topic]: id=time_of_day
+#. [time]: id=second_watch
 #: data/core/help.cfg:481 data/core/macros/schedules.cfg:91
 msgid "Second Watch"
 msgstr "Otrā sardze"
@@ -5368,19 +5368,7 @@ msgstr "Gara tumsa (3)"
 msgid "The Long Dark (4)"
 msgstr "Gara tumsa (4)"
 
-#: data/core/macros/special-notes.cfg:6 src/help/help_topic_generators.cpp:564
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
-msgid "Special Notes:"
-msgstr ""
-"\n"
-"\n"
-"Īpašas piezīmes:"
-
-#: data/core/macros/special-notes.cfg:17
+#: data/core/macros/special-notes.cfg:12
 #, fuzzy
 #| msgid ""
 #| " Spirits have very unusual resistances to damage, and move quite slowly "
@@ -5392,7 +5380,7 @@ msgstr ""
 " Gariem ir ļoti neparasta izturība pret uzbrukumiem, un tie pārvietojas ļoti "
 "lēni pāri ūdeņiem."
 
-#: data/core/macros/special-notes.cfg:20
+#: data/core/macros/special-notes.cfg:15
 #, fuzzy
 #| msgid ""
 #| " This unit’s arcane attack deals tremendous damage to magical creatures, "
@@ -5404,19 +5392,19 @@ msgstr ""
 " Šīs vienības mistiskais uzbrukums rada milzīgus bojājumus maģiskiem "
 "radījumiem."
 
-#: data/core/macros/special-notes.cfg:27
+#: data/core/macros/special-notes.cfg:22
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
 msgstr " Šī vienība ir spējīga veikt pamata dziedināšanu."
 
-#: data/core/macros/special-notes.cfg:30
+#: data/core/macros/special-notes.cfg:25
 #, fuzzy
 #| msgid " This unit is capable of rapid healing."
 msgid "This unit is capable of rapid healing."
 msgstr " Šī vienība ir spējīga veikt ātru dziedināšanu."
 
-#: data/core/macros/special-notes.cfg:33
+#: data/core/macros/special-notes.cfg:28
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, and curing them of "
@@ -5425,7 +5413,7 @@ msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr " Šī vienība ir spējīga dziedēt un izārstēt no indes."
 
-#: data/core/macros/special-notes.cfg:36
+#: data/core/macros/special-notes.cfg:31
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of neutralizing the effects of poison in units "
@@ -5435,7 +5423,7 @@ msgid ""
 "it."
 msgstr " Šī vienība ir spējīga neitralizēt indi."
 
-#: data/core/macros/special-notes.cfg:39
+#: data/core/macros/special-notes.cfg:34
 #, fuzzy
 #| msgid ""
 #| " This unit regenerates, which allows it to heal as though always "
@@ -5445,7 +5433,7 @@ msgid ""
 "a village."
 msgstr " Šī vienība katrā gājienā reģenerējas."
 
-#: data/core/macros/special-notes.cfg:42
+#: data/core/macros/special-notes.cfg:37
 #, fuzzy
 #| msgid ""
 #| " The steadiness of this unit reduces damage from some attacks, but only "
@@ -5457,7 +5445,7 @@ msgstr ""
 " Šīs vienības nosvērtība samazina dažu uzbrukumu radītos bojājumus, bet "
 "tikai aizstāvoties."
 
-#: data/core/macros/special-notes.cfg:45
+#: data/core/macros/special-notes.cfg:40
 #, fuzzy
 #| msgid ""
 #| " The leadership of this unit enables adjacent units of the same side to "
@@ -5470,7 +5458,7 @@ msgstr ""
 " Šīs vienības līdera prasmes ļauj blakus esošām vienībām nodarīt lielākus "
 "bojājumus, bet tas attiecās tikai uz zemāka līmeņa vienībām."
 
-#: data/core/macros/special-notes.cfg:48
+#: data/core/macros/special-notes.cfg:43
 #, fuzzy
 #| msgid ""
 #| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
@@ -5482,13 +5470,13 @@ msgstr ""
 " Šīs vienības veiklība ļauj ignorēt ienaidnieka kontroles zonas un "
 "netraucēti pārvietoties tām cauri."
 
-#: data/core/macros/special-notes.cfg:51
+#: data/core/macros/special-notes.cfg:46
 #, fuzzy
 #| msgid " Illumination increases the lighting level in adjacent areas."
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr " Izgaismošana palielina redzamību."
 
-#: data/core/macros/special-notes.cfg:54
+#: data/core/macros/special-notes.cfg:49
 #, fuzzy
 #| msgid ""
 #| " This unit can use one move to teleport between any two empty villages "
@@ -5500,7 +5488,7 @@ msgstr ""
 " Šī vienība var izmantot vienu gājienu, lai teleportētos starp jebkuriem "
 "diviem (pārvaldītiem) ciemiem."
 
-#: data/core/macros/special-notes.cfg:57
+#: data/core/macros/special-notes.cfg:52
 #, fuzzy
 #| msgid ""
 #| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
@@ -5511,14 +5499,14 @@ msgid ""
 msgstr ""
 " Mežos šī vienība ir neredzama ienaidniekam; ja vien tā nav tieši blakus."
 
-#: data/core/macros/special-notes.cfg:60
+#: data/core/macros/special-notes.cfg:55
 #, fuzzy
 #| msgid ""
 #| " This unit is able to hide at night, leaving no trace of its presence."
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr " Šī vienība spēj slēpties naktī."
 
-#: data/core/macros/special-notes.cfg:63
+#: data/core/macros/special-notes.cfg:58
 #, fuzzy
 #| msgid ""
 #| " This unit can hide in villages (with the exception of water villages), "
@@ -5530,7 +5518,7 @@ msgstr ""
 " Šī vienība spēj slēpties ciematos (izņemot ūdens ciemus), un palikt "
 "nemanīta ienaidniekam; ja vien pretinieks nestāv blakus."
 
-#: data/core/macros/special-notes.cfg:66
+#: data/core/macros/special-notes.cfg:61
 #, fuzzy
 #| msgid ""
 #| " This unit can move unseen in deep water, requiring no air from the "
@@ -5539,7 +5527,7 @@ msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr " Šī vienība spēj pārvietoties dziļos ūdeņos."
 
-#: data/core/macros/special-notes.cfg:69
+#: data/core/macros/special-notes.cfg:64
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -5551,7 +5539,7 @@ msgstr ""
 " Šī vienība gūst 1 veselības punktu pie maksimuma ikreiz, kad tā nogalina "
 "dzīvo vienību."
 
-#: data/core/macros/special-notes.cfg:72
+#: data/core/macros/special-notes.cfg:67
 #, fuzzy
 #| msgid ""
 #| " Whenever its berserk attack is used, this unit continues to push the "
@@ -5563,7 +5551,7 @@ msgstr ""
 " Vienmēr, kad tiek lietots 'dusmu izvirdums', cīņa turpinās kamēr kāds no "
 "cīnītājiem mirst."
 
-#: data/core/macros/special-notes.cfg:75
+#: data/core/macros/special-notes.cfg:70
 #, fuzzy
 #| msgid ""
 #| " If there is an enemy of the target on the opposite side of the target "
@@ -5577,7 +5565,7 @@ msgstr ""
 " Ja upurim pretējā pusē  ir ienaidnieks - šī vienība var iedurt mugurā, "
 "radot divkāršus bojājumus."
 
-#: data/core/macros/special-notes.cfg:78
+#: data/core/macros/special-notes.cfg:73
 #, fuzzy
 #| msgid ""
 #| " Foes who lose their life to the plague will rise again in unlife, unless "
@@ -5589,7 +5577,7 @@ msgstr ""
 " Pretinieki, kuri zaudē dzīvību no nedzīvo sērgas, pēc nāves pārtop zombijos "
 "(ja vien tie nestāv ciemā)."
 
-#: data/core/macros/special-notes.cfg:81
+#: data/core/macros/special-notes.cfg:76
 #, fuzzy
 #| msgid ""
 #| " This unit is able to slow its enemies, halving their movement speed and "
@@ -5601,7 +5589,7 @@ msgstr ""
 " Šī vienība spēj palēnināt ienaidnieku, samazinot uz pusi to pārvietošanās "
 "ātrumu un uzbrukuma spēku (līdz gājiena beigām)."
 
-#: data/core/macros/special-notes.cfg:84
+#: data/core/macros/special-notes.cfg:79
 #, fuzzy
 #| msgid ""
 #| " The ability to turn the living to stone makes this unit extremely "
@@ -5610,7 +5598,7 @@ msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr " Spēj pārvērst dzīvus radijumus akmenī."
 
-#: data/core/macros/special-notes.cfg:87
+#: data/core/macros/special-notes.cfg:82
 #, fuzzy
 #| msgid ""
 #| " This unit’s marksmanship gives it a high chance of hitting targeted "
@@ -5622,7 +5610,7 @@ msgstr ""
 " Šīs vienības precizitāte piešķir lielas iespējas trāpīt pretiniekam (bet "
 "tikai uzbrūkot)."
 
-#: data/core/macros/special-notes.cfg:90
+#: data/core/macros/special-notes.cfg:85
 #, fuzzy
 #| msgid ""
 #| " This unit has magical attacks, which always have a high chance of "
@@ -5632,7 +5620,7 @@ msgid ""
 "opponent."
 msgstr " Šai vienībai ir maģiski uzbrukumi, kas vienmēr palielina precizitāti."
 
-#: data/core/macros/special-notes.cfg:93
+#: data/core/macros/special-notes.cfg:88
 #, fuzzy
 #| msgid ""
 #| " The swarming attacks of this unit become less deadly whenever its "
@@ -5643,7 +5631,7 @@ msgid ""
 msgstr ""
 " Šīs vienības uzbrukumi kļūst mazāk nāvējoši, kad tās biedri ir ievainoti."
 
-#: data/core/macros/special-notes.cfg:96
+#: data/core/macros/special-notes.cfg:91
 #, fuzzy
 #| msgid ""
 #| " Using a charging attack doubles both damage dealt and received; this "
@@ -5655,7 +5643,7 @@ msgstr ""
 " Izmantojot triecienuzbrukumu tiek dubultots gan nodarīto, gan saņemto "
 "bojājumu apjoms. Tas neietekmē aizsardzības pretuzbrukumus."
 
-#: data/core/macros/special-notes.cfg:99
+#: data/core/macros/special-notes.cfg:94
 #, fuzzy
 #| msgid ""
 #| " During battle, this unit can drain life from victims to renew its own "
@@ -5666,7 +5654,7 @@ msgstr ""
 " Kaujas laikā šī vienība spēj izsūkt dzīvību no saviem upuriem, lai "
 "atjaunotu savu veselību."
 
-#: data/core/macros/special-notes.cfg:102
+#: data/core/macros/special-notes.cfg:97
 #, fuzzy
 #| msgid ""
 #| " The length of this unit’s weapon allows it to strike first in melee, "
@@ -5676,7 +5664,7 @@ msgid ""
 "defense."
 msgstr " Ieroča garums ļauj aizstāvoties iesist pirmajam."
 
-#: data/core/macros/special-notes.cfg:105
+#: data/core/macros/special-notes.cfg:100
 #, fuzzy
 #| msgid ""
 #| " The victims of this unit’s poison will continually take damage until "
@@ -5688,7 +5676,7 @@ msgstr ""
 " Šī radijuma inde nodarīs upurim bojājumus, kamēr tas netiks izārstēts "
 "ciematā, vai ar ārsta palīdzību."
 
-#: data/core/macros/special-notes.cfg:108
+#: data/core/macros/special-notes.cfg:103
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
@@ -8073,6 +8061,18 @@ msgstr "Īpašība: "
 #| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "Nepieciešamie PP: "
+
+#: src/help/help_topic_generators.cpp:564
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Special Notes:"
+msgid "Special Notes:"
+msgstr ""
+"\n"
+"\n"
+"Īpašas piezīmes:"
 
 #: src/help/help_topic_generators.cpp:573
 msgid "unit help^Attacks"
